@@ -1,0 +1,11 @@
+Model,Family,Input,Test accuracy (%),Macro F1 (%),Balanced acc. (%),Macro AUC,Cohen kappa,Parameters,Epochs (mean),"Train time (s, mean)"
+Transformer encoder (2 layers),Self-attention,258-d landmarks,99.21 +/- 0.00,99.21 +/- 0.00,99.21 +/- 0.00,0.9996,0.9907,"332,039",40,774
+Unidirectional LSTM,Recurrent,258-d landmarks,98.41 +/- 0.00,98.41 +/- 0.00,98.41 +/- 0.00,0.9998,0.9815,"265,863",40,1070
+BiGRU,Recurrent,258-d landmarks,98.41 +/- 0.00,98.41 +/- 0.00,98.41 +/- 0.00,0.9999,0.9815,"448,903",40,1287
+ST-GCN (skeleton graph),Graph convolutional,75-node skeleton graph,98.41 +/- 0.00,98.43 +/- 0.00,98.41 +/- 0.00,0.9997,0.9815,"231,417",40,19651
+BiLSTM + temporal attention (proposed),Recurrent + attention,258-d landmarks,97.62 +/- 0.00,97.62 +/- 0.00,97.62 +/- 0.00,0.9985,0.9722,"604,551",40,1713
+Temporal CNN (1-D),Convolutional,258-d landmarks,96.83 +/- 0.00,96.81 +/- 0.00,96.83 +/- 0.00,0.9891,0.9630,"224,839",40,331
+Unidirectional GRU,Recurrent,258-d landmarks,96.83 +/- 0.00,96.85 +/- 0.00,96.83 +/- 0.00,0.9971,0.9630,"204,551",40,1040
+BiLSTM (no attention),Recurrent,258-d landmarks,96.03 +/- 0.00,96.02 +/- 0.00,96.03 +/- 0.00,0.9973,0.9537,"587,911",40,1729
+CNN-LSTM (landmarks),Convolutional + recurrent,258-d landmarks,94.44 +/- 0.00,94.32 +/- 0.00,94.44 +/- 0.00,0.9966,0.9352,"323,591",40,666
+MLP (flattened landmarks),Feed-forward,60 x 258 flattened,78.57 +/- 0.00,78.67 +/- 0.00,78.57 +/- 0.00,0.9691,0.7500,"4,022,279",40,543

@@ -1,0 +1,11 @@
+Model,Epochs to best (mean),Epochs run (mean),Best val accuracy (%),Final train accuracy (%),Train-val gap (pp),"Wall clock (s, mean)"
+BiLSTM + temporal attention (proposed),38.0000,40.0000,100.0000,98.2700,-1.7300,1713.0000
+MLP (flattened landmarks),38.0000,40.0000,84.1300,64.7400,-19.3900,543.0000
+Temporal CNN (1-D),37.0000,40.0000,100.0000,99.8300,-0.1700,331.0000
+CNN-LSTM (landmarks),38.0000,40.0000,97.6200,98.9000,1.2800,666.0000
+Unidirectional LSTM,40.0000,40.0000,97.6200,93.2800,-4.3300,1070.0000
+Unidirectional GRU,36.0000,40.0000,97.6200,97.7500,0.1300,1040.0000
+BiGRU,33.0000,40.0000,100.0000,98.1900,-1.8100,1287.0000
+BiLSTM (no attention),39.0000,40.0000,96.8300,96.0700,-0.7600,1729.0000
+Transformer encoder (2 layers),40.0000,40.0000,99.2100,99.8000,0.6000,774.0000
+ST-GCN (skeleton graph),40.0000,40.0000,100.0000,100.0000,0.0000,19651.0000
