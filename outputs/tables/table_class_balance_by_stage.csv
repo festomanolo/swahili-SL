@@ -1,0 +1,8 @@
+Pipeline stage,Samples,Smallest class,Largest class,Imbalance ratio (max/min)
+Archive (all folders),845,119,122,1.0252
+Study corpus (after class selection and balancing),837,119,120,1.0084
+After the landmark-quality filter,837,119,120,1.0084
+Training partition (original clips),585,83,84,1.0120
+Training partition (after augmentation),4095,581,588,1.0120
+Validation partition,126,18,18,1.0000
+Test partition,126,18,18,1.0000

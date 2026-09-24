@@ -1,0 +1,7 @@
+Stated in the manuscript,Section,Measured here,Action
+840 validated clips (60 per class per signer),"3.2.3, Table 2, Table 3",837 clips,"Use the measured count. If it is not 840, say why (see the balancing note and the unreadable-clip table)."
+7 gesture classes,throughout,"7 classes selected from 8 on disk (baba, habari, hedhi, kula, mama, nenda, njema, siku)",Confirm the published vocabulary matches CLASSES in Section 2.
+30 fps throughout,"3.2.2, Table 3","30 fps (n=835), 60 fps (n=2)","If more than one rate appears, correct Section 3.2.2 and state that sequence length is standardized in frames, not seconds."
+raw sequence length 15-300 frames,"3.3, Table 3",15-176 frames (mean 25.9),"Replace the range. If the mean is well below T = 60, most of the input window is padding and that should be stated, since it is what makes the masking layer load-bearing."
+"augmented corpus of 5,880 samples","3.4, Table 2, Table 3, 4.1",7 x (training partition only),Replace with the per-partition counts; see table_split_and_augmentation (Reviewer A comment 6).
+"iPhone 11 and iPhone 12 rear cameras, one per signer",3.2.2,"1024x680, 1920x1080",Check that the number of distinct resolutions matches the number of devices claimed.

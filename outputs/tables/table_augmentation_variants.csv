@@ -1,0 +1,8 @@
+Variant,Transformation,Sequences contributed,Applied to
+original,identity (the recorded clip),585,training partition only
+stretch_0.9,"Eq. (2), alpha = 0.9 (slower articulation)",585,training partition only
+stretch_1.1,"Eq. (2), alpha = 1.1 (faster articulation)",585,training partition only
+noise_0.01,"Eq. (3), sigma = 0.01 landmark jitter",585,training partition only
+noise_0.02,"Eq. (3), sigma = 0.02 landmark jitter",585,training partition only
+shift_+5,temporal shift of +5 frames,585,training partition only
+shift_-5,temporal shift of -5 frames,585,training partition only

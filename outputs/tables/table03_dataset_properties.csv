@@ -1,0 +1,16 @@
+Attribute,Value
+Raw samples,837 clips (60 per class per signer)
+Gesture classes,7 isolated SwSL gestures
+Signers,"2 (Britney, Grace)"
+Recording rate (fps),"30.0, 60.0"
+Sequence length (raw frames),15-176
+"Sequence length, mean +/- std",25.9 +/- 9.4
+"Clip duration (s), mean +/- std",0.86 +/- 0.31
+"Clip duration (s), min-max",0.50-5.87
+Frame resolution(s),"1024x680 (n=588), 1920x1080 (n=249)"
+Standardized length,60 frames
+Length standardization,zero-padding / truncation
+Per-frame features (primary),258 (132 pose + 63 left hand + 63 right hand)
+Per-frame features (cached),1662 (primary + 1404 face)
+Augmentation variants per training clip,7 (original + 2 stretch + 2 noise + 2 shift)
+Landmark quality threshold,>= 0% of frames with a pose detection

@@ -1,0 +1,8 @@
+Experiment,Runs,Estimated minutes
+Proposed model + landmark baselines,10,233
+Raw-pixel baselines (slower per epoch),0,0
+Ablations,23,537
+Cross-validation,0,0
+Leave-one-signer-out,2,47
+Published-configuration fidelity check,0,0
+TOTAL,35,817

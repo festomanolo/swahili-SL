@@ -1,0 +1,10 @@
+Quantity,Value
+Standardized window T,60
+"Raw length, min-max",15-176 frames
+"Raw length, mean +/- std",25.9 +/- 9.4 frames
+"Raw length, median",24 frames
+Clips shorter than T (zero-padded),834 (99.6%)
+Clips longer than T (truncated),3 (0.4%)
+Mean live (non-padded) frames per clip,25.7 of 60
+Mean share of the window that is padding,57.2%
+Frames discarded by truncation,191 across the corpus

@@ -1,0 +1,5 @@
+Partition,Original clips,Share of corpus,Augmentation factor,Sequences used for training/evaluation,Original clips per class
+Train,585,69.9%,7x,4095,83
+Validation,126,15.1%,1x (none),126,18
+Test,126,15.1%,1x (none),126,18
+Total,837,100.0%,-,4347,119
