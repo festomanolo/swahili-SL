@@ -1,0 +1,2653 @@
+{
+  "environment": {
+    "python": "3.12.8",
+    "platform": "macOS-26.5.2-x86_64-i386-64bit",
+    "processor": "i386",
+    "cpu_count": 8,
+    "tensorflow": "2.16.2",
+    "keras": "3.15.1",
+    "numpy": "1.26.4",
+    "pandas": "3.0.6",
+    "opencv": "4.11.0",
+    "mediapipe": "0.10.21",
+    "gpu": null,
+    "gpu_name": null,
+    "run_started_utc": "2026-09-23T16:49:02Z",
+    "mediapipe_worker_python": "3.12.8"
+  },
+  "config": {
+    "manuscript": "A Swahili Sign Language Recognition Using Bidirectional LSTM with Temporal Attention (JCTA revision)",
+    "preset": "quick",
+    "classes": [
+      "nenda",
+      "njema",
+      "mama",
+      "hedhi",
+      "kula",
+      "baba",
+      "habari"
+    ],
+    "class_glosses": {
+      "nenda": "go",
+      "njema": "good",
+      "mama": "mother",
+      "hedhi": "menstruation",
+      "kula": "eat",
+      "baba": "father",
+      "habari": "hi"
+    },
+    "signers": [
+      "Britney",
+      "Grace"
+    ],
+    "corpus": {
+      "source": "/Volumes/MacX/Sw/raw_videos",
+      "archive_clips": 935,
+      "selected_classes": 7,
+      "balance_per_signer": 60,
+      "balance_seed": 7,
+      "study_clips": 837,
+      "clips_retained_after_quality_filter": 837,
+      "quality_threshold_pose_detection": 0.0
+    },
+    "extraction": {
+      "detector": "MediaPipe Holistic",
+      "mediapipe_version": "0.10.21",
+      "model_complexity": 1,
+      "min_detection_confidence": 0.5,
+      "min_tracking_confidence": 0.5,
+      "refine_face_landmarks": false,
+      "smooth_landmarks": true,
+      "pose_values_per_frame": 132,
+      "hand_values_per_frame_each": 63,
+      "face_values_per_frame": 1404,
+      "primary_feature_dim": 258,
+      "cached_feature_dim": 1662
+    },
+    "sequence": {
+      "length": 60,
+      "length_mode": "pad_truncate",
+      "raw_length_min": 15,
+      "raw_length_max": 176,
+      "padding_value": 0.0,
+      "masking": "Masking layer at the input"
+    },
+    "normalization": {
+      "mode": "train_stats",
+      "description": "min/max per coordinate dimension over all non-padded frames of the training split only; constants are fixed and released with the model",
+      "fitted_dims": 258,
+      "min_of_mins": -1.6914385557174683,
+      "max_of_maxes": 2.017017364501953
+    },
+    "split": {
+      "order": "split first, then augment the training partition only",
+      "fractions": [
+        0.7,
+        0.15,
+        0.15
+      ],
+      "stratified_by": "class label",
+      "random_state": 42,
+      "signer_independent": false,
+      "n_train_original": 585,
+      "n_train_augmented": 4095,
+      "n_val": 126,
+      "n_test": 126
+    },
+    "augmentation": {
+      "applied_to": "training partition only",
+      "variants": [
+        "original",
+        "stretch_0.9",
+        "stretch_1.1",
+        "noise_0.01",
+        "noise_0.02",
+        "shift_+5",
+        "shift_-5"
+      ],
+      "factor": 7,
+      "stretch_alpha": [
+        0.9,
+        1.1
+      ],
+      "noise_sigma": [
+        0.01,
+        0.02
+      ],
+      "shift_frames": [
+        5,
+        -5
+      ],
+      "seed": 1234
+    },
+    "training": {
+      "optimizer": "Adam",
+      "beta_1": 0.9,
+      "beta_2": 0.999,
+      "learning_rate": 0.0005,
+      "clipnorm": 1.0,
+      "l2": 0.001,
+      "input_dropout": 0.2,
+      "cudnn_fast_path": true,
+      "dense_dropout": [
+        0.4,
+        0.3
+      ],
+      "batch_size": 32,
+      "max_epochs": 40,
+      "seeds": [
+        1
+      ],
+      "early_stopping": {
+        "monitor": "val_loss",
+        "patience": 30,
+        "restore_best_weights": true
+      },
+      "reduce_lr_on_plateau": {
+        "monitor": "val_loss",
+        "factor": 0.5,
+        "patience": 10,
+        "min_lr": 1e-06
+      },
+      "model_checkpoint": "best val_accuracy",
+      "loss": "sparse categorical cross-entropy",
+      "class_weighting": "Imbalance ratio in the augmented training partition is 1.0120. Class weighting is DISABLED because it would be a no-op. The manuscript should state that the balanced factorial design survives the stratified split, so inverse-frequency weighting was not required."
+    },
+    "environment": {
+      "python": "3.12.8",
+      "platform": "macOS-26.5.2-x86_64-i386-64bit",
+      "processor": "i386",
+      "cpu_count": 8,
+      "tensorflow": "2.16.2",
+      "keras": "3.15.1",
+      "numpy": "1.26.4",
+      "pandas": "3.0.6",
+      "opencv": "4.11.0",
+      "mediapipe": "0.10.21",
+      "gpu": null,
+      "gpu_name": null,
+      "run_started_utc": "2026-09-23T16:49:02Z",
+      "mediapipe_worker_python": "3.12.8"
+    }
+  },
+  "numbers": {
+    "n_clips_raw": {
+      "value": 837,
+      "note": "Section 3.2.3 and Table 3: raw clip count"
+    },
+    "n_classes": {
+      "value": 7,
+      "note": "everywhere the class count appears"
+    },
+    "n_signers": {
+      "value": 2,
+      "note": "Section 3.2.1"
+    },
+    "fps": {
+      "value": 30.0,
+      "note": "Section 3.2.2"
+    },
+    "frames_min": {
+      "value": 15,
+      "note": "Section 3.3 sequence-length range"
+    },
+    "frames_max": {
+      "value": 176,
+      "note": "Section 3.3 sequence-length range"
+    },
+    "n_clips_retained": {
+      "value": 837,
+      "note": "Section 3.2.4: clips passing the 90% landmark-quality threshold"
+    },
+    "pct_clips_padded": {
+      "value": 99.6,
+      "note": "Section 3.3: share of clips shorter than the 60-frame window"
+    },
+    "mean_live_frames": {
+      "value": 25.7,
+      "note": "Section 3.3: mean number of real (non-padded) frames per standardized sequence"
+    },
+    "n_train_original": {
+      "value": 585,
+      "note": "Section 4.1: training clips before augmentation"
+    },
+    "n_val": {
+      "value": 126,
+      "note": "Section 4.1: validation clips"
+    },
+    "n_test": {
+      "value": 126,
+      "note": "Section 4.1, Table 8, Figure 6: test clips"
+    },
+    "test_per_class": {
+      "value": 18,
+      "note": "Figure 6 caption: test samples per class"
+    },
+    "train_imbalance_ratio": {
+      "value": 1.012,
+      "note": "Section 3.6 / Eq. (15): whether class weighting is justified"
+    },
+    "proposed_accuracy_mean": {
+      "value": 97.62,
+      "note": "Abstract, Section 4.2, Table 7, Conclusions: headline accuracy (mean over seeds)"
+    },
+    "proposed_accuracy_std": {
+      "value": 0.0,
+      "note": "Table 7: cross-seed standard deviation of the proposed model"
+    },
+    "proposed_macro_f1_mean": {
+      "value": 97.62,
+      "note": "Table 7 and Table 8 macro-average row"
+    },
+    "proposed_best_accuracy": {
+      "value": 97.62,
+      "note": "Section 4.2: single-run checkpointed best model, if a single figure is quoted"
+    },
+    "strongest_baseline": {
+      "value": "Transformer encoder (2 layers)",
+      "note": "Section 4.3: the model the proposed one is compared to"
+    },
+    "strongest_baseline_accuracy": {
+      "value": 99.21,
+      "note": "Section 4.3 and Conclusions"
+    },
+    "margin_over_best_baseline_pp": {
+      "value": -1.59,
+      "note": "Section 4.3: margin in percentage points over the strongest same-corpus baseline"
+    },
+    "proposed_best_epoch": {
+      "value": 38,
+      "note": "Figure 4 caption: the epoch at which early stopping restored the best weights"
+    },
+    "proposed_train_val_gap_pp": {
+      "value": -1.73,
+      "note": "Section 4.2: the train-validation gap behind the regularization claim"
+    },
+    "expected_calibration_error": {
+      "value": 0.0164,
+      "note": "Section 4.7.2: whether the confidence threshold in Algorithm 1 is trustworthy"
+    },
+    "n_baselines_significantly_beaten": {
+      "value": 1,
+      "note": "Section 4.3: how many baselines the proposed model separates from at p<0.05"
+    },
+    "proposed_accuracy_ci": {
+      "value": "[94.44, 100.0]",
+      "note": "Abstract and Section 4.2: the 95% bootstrap interval to quote alongside the point accuracy"
+    },
+    "delta_full_face_pp": {
+      "value": -3.17,
+      "note": "Section 3.2.6 (A10): measured effect of adding the full 468-landmark face stream"
+    },
+    "delta_compact_face_pp": {
+      "value": -0.79,
+      "note": "Section 3.2.6 (A10): measured effect of adding the compact 40-landmark face stream"
+    },
+    "delta_hands_only_pp": {
+      "value": -23.02,
+      "note": "Section 4.5 (B16): measured feature importance, NOT a linguistic claim"
+    },
+    "delta_pose_only_pp": {
+      "value": 0.0,
+      "note": "Section 4.5 (B16): measured feature importance, NOT a linguistic claim"
+    },
+    "attention_entropy_ratio": {
+      "value": 0.4956,
+      "note": "Section 4.6: how much more selective than uniform the learned attention is"
+    },
+    "attention_top10_mass": {
+      "value": 0.96,
+      "note": "Section 4.6: share of attention mass on the ten most salient frames"
+    },
+    "signer_dependent_accuracy": {
+      "value": 97.62,
+      "note": "Abstract and Section 4.2: the headline figure, scoped to unseen repetitions by known signers"
+    },
+    "signer_independent_accuracy": {
+      "value": 55.8,
+      "note": "Section 4.1 and 4.7.1 (B15): leave-one-signer-out accuracy, to be reported alongside the headline figure"
+    },
+    "signer_generalization_gap_pp": {
+      "value": 41.82,
+      "note": "Section 4.7.1 (B15): how much of the headline figure depends on having seen the signer during training"
+    },
+    "proposed_parameters": {
+      "value": 604551,
+      "note": "Abstract, Table 5, Table 10, Table 11, Section 4.7.2: the true parameter count"
+    },
+    "proposed_macs_per_clip_M": {
+      "value": 34.65,
+      "note": "Section 4.7.2: computational cost per clip, if a complexity figure is quoted"
+    },
+    "proposed_model_size_mb": {
+      "value": 7.35,
+      "note": "Table 10: deployed model size"
+    },
+    "extraction_ms_per_frame": {
+      "value": 71.43,
+      "note": "Section 4.7.2 (B14): the cost that determines whether the pipeline is interactive"
+    },
+    "extraction_fps": {
+      "value": 14.0,
+      "note": "Section 4.7.2 (B14): sustained landmark-extraction frame rate"
+    },
+    "inference_ms_cpu": {
+      "value": 1301.74,
+      "note": "Section 4.7.2 (B14): classifier latency per clip on CPU"
+    },
+    "end_to_end_ms_cpu": {
+      "value": 5587.6,
+      "note": "Section 4.7.2 (B14): end-to-end delay for one clip on CPU"
+    },
+    "real_time_verdict": {
+      "value": "EXCEEDED by 38.1 ms per frame",
+      "note": "Section 4.7.1 (B14): whether the term \"real-time\" is defensible at all"
+    },
+    "tts_parameters": {
+      "value": 36284784,
+      "note": "Section 3.7: size of the pretrained synthesizer, for contrast with the recognition model. Makes the point that the large component is the one this study did not train."
+    },
+    "tts_mean_latency_ms": {
+      "value": 930.0,
+      "note": "Section 4.7.2: synthesis latency, if end-to-end interaction cost is quoted"
+    },
+    "release_dataset_mb": {
+      "value": 12.3,
+      "note": "Data Availability Statement: size of the releasable landmark corpus"
+    }
+  },
+  "results": {
+    "BiLSTM + temporal attention (proposed)": {
+      "tag": "proposed",
+      "seeds": [
+        1
+      ],
+      "params": 604551,
+      "accuracy_mean": 0.9761904761904762,
+      "accuracy_std": 0.0,
+      "accuracy_values": [
+        0.9761904761904762
+      ],
+      "macro_f1_mean": 0.9761720904578047,
+      "macro_f1_std": 0.0,
+      "macro_f1_values": [
+        0.9761720904578047
+      ],
+      "balanced_accuracy_mean": 0.9761904761904763,
+      "balanced_accuracy_std": 0.0,
+      "balanced_accuracy_values": [
+        0.9761904761904763
+      ],
+      "macro_precision_mean": 0.9774436090225563,
+      "macro_precision_std": 0.0,
+      "macro_precision_values": [
+        0.9774436090225563
+      ],
+      "macro_recall_mean": 0.9761904761904763,
+      "macro_recall_std": 0.0,
+      "macro_recall_values": [
+        0.9761904761904763
+      ],
+      "cohen_kappa_mean": 0.9722222222222222,
+      "cohen_kappa_std": 0.0,
+      "cohen_kappa_values": [
+        0.9722222222222222
+      ],
+      "mcc_mean": 0.9724366278312291,
+      "mcc_std": 0.0,
+      "mcc_values": [
+        0.9724366278312291
+      ],
+      "macro_auc_mean": 0.998530276308054,
+      "macro_auc_std": 0.0,
+      "macro_auc_values": [
+        0.998530276308054
+      ],
+      "top2_accuracy_mean": 0.9841269841269841,
+      "top2_accuracy_std": 0.0,
+      "top2_accuracy_values": [
+        0.9841269841269841
+      ],
+      "log_loss_mean": 0.15834613144397736,
+      "log_loss_std": 0.0,
+      "log_loss_values": [
+        0.15834613144397736
+      ],
+      "train_time_s_mean": 1712.6,
+      "train_time_s_std": 0.0,
+      "train_time_s_values": [
+        1712.6
+      ],
+      "epochs_run_mean": 40.0,
+      "epochs_run_std": 0.0,
+      "epochs_run_values": [
+        40.0
+      ],
+      "best_seed": 1
+    },
+    "MLP (flattened landmarks)": {
+      "tag": "MLP (flattened landmarks)",
+      "seeds": [
+        1
+      ],
+      "params": 4022279,
+      "accuracy_mean": 0.7857142857142857,
+      "accuracy_std": 0.0,
+      "accuracy_values": [
+        0.7857142857142857
+      ],
+      "macro_f1_mean": 0.7867223470695768,
+      "macro_f1_std": 0.0,
+      "macro_f1_values": [
+        0.7867223470695768
+      ],
+      "balanced_accuracy_mean": 0.7857142857142856,
+      "balanced_accuracy_std": 0.0,
+      "balanced_accuracy_values": [
+        0.7857142857142856
+      ],
+      "macro_precision_mean": 0.8158354218880535,
+      "macro_precision_std": 0.0,
+      "macro_precision_values": [
+        0.8158354218880535
+      ],
+      "macro_recall_mean": 0.7857142857142856,
+      "macro_recall_std": 0.0,
+      "macro_recall_values": [
+        0.7857142857142856
+      ],
+      "cohen_kappa_mean": 0.75,
+      "cohen_kappa_std": 0.0,
+      "cohen_kappa_values": [
+        0.75
+      ],
+      "mcc_mean": 0.7543362602826164,
+      "mcc_std": 0.0,
+      "mcc_values": [
+        0.7543362602826164
+      ],
+      "macro_auc_mean": 0.9690623162845384,
+      "macro_auc_std": 0.0,
+      "macro_auc_values": [
+        0.9690623162845384
+      ],
+      "top2_accuracy_mean": 0.9444444444444444,
+      "top2_accuracy_std": 0.0,
+      "top2_accuracy_values": [
+        0.9444444444444444
+      ],
+      "log_loss_mean": 0.7006818652153015,
+      "log_loss_std": 0.0,
+      "log_loss_values": [
+        0.7006818652153015
+      ],
+      "train_time_s_mean": 543.1,
+      "train_time_s_std": 0.0,
+      "train_time_s_values": [
+        543.1
+      ],
+      "epochs_run_mean": 40.0,
+      "epochs_run_std": 0.0,
+      "epochs_run_values": [
+        40.0
+      ],
+      "best_seed": 1
+    },
+    "Temporal CNN (1-D)": {
+      "tag": "Temporal CNN (1-D)",
+      "seeds": [
+        1
+      ],
+      "params": 224839,
+      "accuracy_mean": 0.9682539682539683,
+      "accuracy_std": 0.0,
+      "accuracy_values": [
+        0.9682539682539683
+      ],
+      "macro_f1_mean": 0.9680813395099109,
+      "macro_f1_std": 0.0,
+      "macro_f1_values": [
+        0.9680813395099109
+      ],
+      "balanced_accuracy_mean": 0.9682539682539684,
+      "balanced_accuracy_std": 0.0,
+      "balanced_accuracy_values": [
+        0.9682539682539684
+      ],
+      "macro_precision_mean": 0.9720730397422128,
+      "macro_precision_std": 0.0,
+      "macro_precision_values": [
+        0.9720730397422128
+      ],
+      "macro_recall_mean": 0.9682539682539684,
+      "macro_recall_std": 0.0,
+      "macro_recall_values": [
+        0.9682539682539684
+      ],
+      "cohen_kappa_mean": 0.962962962962963,
+      "cohen_kappa_std": 0.0,
+      "cohen_kappa_values": [
+        0.962962962962963
+      ],
+      "mcc_mean": 0.9636713886917995,
+      "mcc_std": 0.0,
+      "mcc_values": [
+        0.9636713886917995
+      ],
+      "macro_auc_mean": 0.9891240446796001,
+      "macro_auc_std": 0.0,
+      "macro_auc_values": [
+        0.9891240446796001
+      ],
+      "top2_accuracy_mean": 0.9841269841269841,
+      "top2_accuracy_std": 0.0,
+      "top2_accuracy_values": [
+        0.9841269841269841
+      ],
+      "log_loss_mean": 0.2853700816631317,
+      "log_loss_std": 0.0,
+      "log_loss_values": [
+        0.2853700816631317
+      ],
+      "train_time_s_mean": 331.3,
+      "train_time_s_std": 0.0,
+      "train_time_s_values": [
+        331.3
+      ],
+      "epochs_run_mean": 40.0,
+      "epochs_run_std": 0.0,
+      "epochs_run_values": [
+        40.0
+      ],
+      "best_seed": 1
+    },
+    "CNN-LSTM (landmarks)": {
+      "tag": "CNN-LSTM (landmarks)",
+      "seeds": [
+        1
+      ],
+      "params": 323591,
+      "accuracy_mean": 0.9444444444444444,
+      "accuracy_std": 0.0,
+      "accuracy_values": [
+        0.9444444444444444
+      ],
+      "macro_f1_mean": 0.9432465091299679,
+      "macro_f1_std": 0.0,
+      "macro_f1_values": [
+        0.9432465091299679
+      ],
+      "balanced_accuracy_mean": 0.9444444444444445,
+      "balanced_accuracy_std": 0.0,
+      "balanced_accuracy_values": [
+        0.9444444444444445
+      ],
+      "macro_precision_mean": 0.9495361781076068,
+      "macro_precision_std": 0.0,
+      "macro_precision_values": [
+        0.9495361781076068
+      ],
+      "macro_recall_mean": 0.9444444444444445,
+      "macro_recall_std": 0.0,
+      "macro_recall_values": [
+        0.9444444444444445
+      ],
+      "cohen_kappa_mean": 0.9351851851851852,
+      "cohen_kappa_std": 0.0,
+      "cohen_kappa_values": [
+        0.9351851851851852
+      ],
+      "mcc_mean": 0.9364936668824991,
+      "mcc_std": 0.0,
+      "mcc_values": [
+        0.9364936668824991
+      ],
+      "macro_auc_mean": 0.9966196355085243,
+      "macro_auc_std": 0.0,
+      "macro_auc_values": [
+        0.9966196355085243
+      ],
+      "top2_accuracy_mean": 0.9761904761904762,
+      "top2_accuracy_std": 0.0,
+      "top2_accuracy_values": [
+        0.9761904761904762
+      ],
+      "log_loss_mean": 0.23402322828769684,
+      "log_loss_std": 0.0,
+      "log_loss_values": [
+        0.23402322828769684
+      ],
+      "train_time_s_mean": 665.5,
+      "train_time_s_std": 0.0,
+      "train_time_s_values": [
+        665.5
+      ],
+      "epochs_run_mean": 40.0,
+      "epochs_run_std": 0.0,
+      "epochs_run_values": [
+        40.0
+      ],
+      "best_seed": 1
+    },
+    "Unidirectional LSTM": {
+      "tag": "Unidirectional LSTM",
+      "seeds": [
+        1
+      ],
+      "params": 265863,
+      "accuracy_mean": 0.9841269841269841,
+      "accuracy_std": 0.0,
+      "accuracy_values": [
+        0.9841269841269841
+      ],
+      "macro_f1_mean": 0.9841147269718699,
+      "macro_f1_std": 0.0,
+      "macro_f1_values": [
+        0.9841147269718699
+      ],
+      "balanced_accuracy_mean": 0.9841269841269842,
+      "balanced_accuracy_std": 0.0,
+      "balanced_accuracy_values": [
+        0.9841269841269842
+      ],
+      "macro_precision_mean": 0.9849624060150377,
+      "macro_precision_std": 0.0,
+      "macro_precision_values": [
+        0.9849624060150377
+      ],
+      "macro_recall_mean": 0.9841269841269842,
+      "macro_recall_std": 0.0,
+      "macro_recall_values": [
+        0.9841269841269842
+      ],
+      "cohen_kappa_mean": 0.9814814814814815,
+      "cohen_kappa_std": 0.0,
+      "cohen_kappa_values": [
+        0.9814814814814815
+      ],
+      "mcc_mean": 0.9816257639492189,
+      "mcc_std": 0.0,
+      "mcc_values": [
+        0.9816257639492189
+      ],
+      "macro_auc_mean": 0.9997795414462082,
+      "macro_auc_std": 0.0,
+      "macro_auc_values": [
+        0.9997795414462082
+      ],
+      "top2_accuracy_mean": 0.9920634920634921,
+      "top2_accuracy_std": 0.0,
+      "top2_accuracy_values": [
+        0.9920634920634921
+      ],
+      "log_loss_mean": 0.09564051032066345,
+      "log_loss_std": 0.0,
+      "log_loss_values": [
+        0.09564051032066345
+      ],
+      "train_time_s_mean": 1070.3,
+      "train_time_s_std": 0.0,
+      "train_time_s_values": [
+        1070.3
+      ],
+      "epochs_run_mean": 40.0,
+      "epochs_run_std": 0.0,
+      "epochs_run_values": [
+        40.0
+      ],
+      "best_seed": 1
+    },
+    "Unidirectional GRU": {
+      "tag": "Unidirectional GRU",
+      "seeds": [
+        1
+      ],
+      "params": 204551,
+      "accuracy_mean": 0.9682539682539683,
+      "accuracy_std": 0.0,
+      "accuracy_values": [
+        0.9682539682539683
+      ],
+      "macro_f1_mean": 0.968450082735797,
+      "macro_f1_std": 0.0,
+      "macro_f1_values": [
+        0.968450082735797
+      ],
+      "balanced_accuracy_mean": 0.9682539682539684,
+      "balanced_accuracy_std": 0.0,
+      "balanced_accuracy_values": [
+        0.9682539682539684
+      ],
+      "macro_precision_mean": 0.9699248120300752,
+      "macro_precision_std": 0.0,
+      "macro_precision_values": [
+        0.9699248120300752
+      ],
+      "macro_recall_mean": 0.9682539682539684,
+      "macro_recall_std": 0.0,
+      "macro_recall_values": [
+        0.9682539682539684
+      ],
+      "cohen_kappa_mean": 0.962962962962963,
+      "cohen_kappa_std": 0.0,
+      "cohen_kappa_values": [
+        0.962962962962963
+      ],
+      "mcc_mean": 0.9631753266137888,
+      "mcc_std": 0.0,
+      "mcc_values": [
+        0.9631753266137888
+      ],
+      "macro_auc_mean": 0.9970605526161082,
+      "macro_auc_std": 0.0,
+      "macro_auc_values": [
+        0.9970605526161082
+      ],
+      "top2_accuracy_mean": 0.9761904761904762,
+      "top2_accuracy_std": 0.0,
+      "top2_accuracy_values": [
+        0.9761904761904762
+      ],
+      "log_loss_mean": 0.16287893056869507,
+      "log_loss_std": 0.0,
+      "log_loss_values": [
+        0.16287893056869507
+      ],
+      "train_time_s_mean": 1040.4,
+      "train_time_s_std": 0.0,
+      "train_time_s_values": [
+        1040.4
+      ],
+      "epochs_run_mean": 40.0,
+      "epochs_run_std": 0.0,
+      "epochs_run_values": [
+        40.0
+      ],
+      "best_seed": 1
+    },
+    "BiGRU": {
+      "tag": "BiGRU",
+      "seeds": [
+        1
+      ],
+      "params": 448903,
+      "accuracy_mean": 0.9841269841269841,
+      "accuracy_std": 0.0,
+      "accuracy_values": [
+        0.9841269841269841
+      ],
+      "macro_f1_mean": 0.9841147269718699,
+      "macro_f1_std": 0.0,
+      "macro_f1_values": [
+        0.9841147269718699
+      ],
+      "balanced_accuracy_mean": 0.9841269841269842,
+      "balanced_accuracy_std": 0.0,
+      "balanced_accuracy_values": [
+        0.9841269841269842
+      ],
+      "macro_precision_mean": 0.9849624060150377,
+      "macro_precision_std": 0.0,
+      "macro_precision_values": [
+        0.9849624060150377
+      ],
+      "macro_recall_mean": 0.9841269841269842,
+      "macro_recall_std": 0.0,
+      "macro_recall_values": [
+        0.9841269841269842
+      ],
+      "cohen_kappa_mean": 0.9814814814814815,
+      "cohen_kappa_std": 0.0,
+      "cohen_kappa_values": [
+        0.9814814814814815
+      ],
+      "mcc_mean": 0.9816257639492189,
+      "mcc_std": 0.0,
+      "mcc_values": [
+        0.9816257639492189
+      ],
+      "macro_auc_mean": 0.9999265138154028,
+      "macro_auc_std": 0.0,
+      "macro_auc_values": [
+        0.9999265138154028
+      ],
+      "top2_accuracy_mean": 0.9920634920634921,
+      "top2_accuracy_std": 0.0,
+      "top2_accuracy_values": [
+        0.9920634920634921
+      ],
+      "log_loss_mean": 0.055803332477808,
+      "log_loss_std": 0.0,
+      "log_loss_values": [
+        0.055803332477808
+      ],
+      "train_time_s_mean": 1286.6,
+      "train_time_s_std": 0.0,
+      "train_time_s_values": [
+        1286.6
+      ],
+      "epochs_run_mean": 40.0,
+      "epochs_run_std": 0.0,
+      "epochs_run_values": [
+        40.0
+      ],
+      "best_seed": 1
+    },
+    "BiLSTM (no attention)": {
+      "tag": "BiLSTM (no attention)",
+      "seeds": [
+        1
+      ],
+      "params": 587911,
+      "accuracy_mean": 0.9603174603174603,
+      "accuracy_std": 0.0,
+      "accuracy_values": [
+        0.9603174603174603
+      ],
+      "macro_f1_mean": 0.9602191753894541,
+      "macro_f1_std": 0.0,
+      "macro_f1_values": [
+        0.9602191753894541
+      ],
+      "balanced_accuracy_mean": 0.9603174603174602,
+      "balanced_accuracy_std": 0.0,
+      "balanced_accuracy_values": [
+        0.9603174603174602
+      ],
+      "macro_precision_mean": 0.9634920634920636,
+      "macro_precision_std": 0.0,
+      "macro_precision_values": [
+        0.9634920634920636
+      ],
+      "macro_recall_mean": 0.9603174603174602,
+      "macro_recall_std": 0.0,
+      "macro_recall_values": [
+        0.9603174603174602
+      ],
+      "cohen_kappa_mean": 0.9537037037037037,
+      "cohen_kappa_std": 0.0,
+      "cohen_kappa_values": [
+        0.9537037037037037
+      ],
+      "mcc_mean": 0.9542648709800957,
+      "mcc_std": 0.0,
+      "mcc_values": [
+        0.9542648709800957
+      ],
+      "macro_auc_mean": 0.9972810111699001,
+      "macro_auc_std": 0.0,
+      "macro_auc_values": [
+        0.9972810111699001
+      ],
+      "top2_accuracy_mean": 0.9761904761904762,
+      "top2_accuracy_std": 0.0,
+      "top2_accuracy_values": [
+        0.9761904761904762
+      ],
+      "log_loss_mean": 0.14603592455387115,
+      "log_loss_std": 0.0,
+      "log_loss_values": [
+        0.14603592455387115
+      ],
+      "train_time_s_mean": 1729.4,
+      "train_time_s_std": 0.0,
+      "train_time_s_values": [
+        1729.4
+      ],
+      "epochs_run_mean": 40.0,
+      "epochs_run_std": 0.0,
+      "epochs_run_values": [
+        40.0
+      ],
+      "best_seed": 1
+    },
+    "Transformer encoder (2 layers)": {
+      "tag": "Transformer encoder (2 layers)",
+      "seeds": [
+        1
+      ],
+      "params": 332039,
+      "accuracy_mean": 0.9920634920634921,
+      "accuracy_std": 0.0,
+      "accuracy_values": [
+        0.9920634920634921
+      ],
+      "macro_f1_mean": 0.9920573634859349,
+      "macro_f1_std": 0.0,
+      "macro_f1_values": [
+        0.9920573634859349
+      ],
+      "balanced_accuracy_mean": 0.9920634920634921,
+      "balanced_accuracy_std": 0.0,
+      "balanced_accuracy_values": [
+        0.9920634920634921
+      ],
+      "macro_precision_mean": 0.9924812030075189,
+      "macro_precision_std": 0.0,
+      "macro_precision_values": [
+        0.9924812030075189
+      ],
+      "macro_recall_mean": 0.9920634920634921,
+      "macro_recall_std": 0.0,
+      "macro_recall_values": [
+        0.9920634920634921
+      ],
+      "cohen_kappa_mean": 0.9907407407407407,
+      "cohen_kappa_std": 0.0,
+      "cohen_kappa_values": [
+        0.9907407407407407
+      ],
+      "mcc_mean": 0.9908135545240119,
+      "mcc_std": 0.0,
+      "mcc_values": [
+        0.9908135545240119
+      ],
+      "macro_auc_mean": 0.9996325690770135,
+      "macro_auc_std": 0.0,
+      "macro_auc_values": [
+        0.9996325690770135
+      ],
+      "top2_accuracy_mean": 0.9920634920634921,
+      "top2_accuracy_std": 0.0,
+      "top2_accuracy_values": [
+        0.9920634920634921
+      ],
+      "log_loss_mean": 0.059116993099451065,
+      "log_loss_std": 0.0,
+      "log_loss_values": [
+        0.059116993099451065
+      ],
+      "train_time_s_mean": 774.1,
+      "train_time_s_std": 0.0,
+      "train_time_s_values": [
+        774.1
+      ],
+      "epochs_run_mean": 40.0,
+      "epochs_run_std": 0.0,
+      "epochs_run_values": [
+        40.0
+      ],
+      "best_seed": 1
+    },
+    "ST-GCN (skeleton graph)": {
+      "tag": "ST-GCN (skeleton graph)",
+      "seeds": [
+        1
+      ],
+      "params": 231417,
+      "accuracy_mean": 0.9841269841269841,
+      "accuracy_std": 0.0,
+      "accuracy_values": [
+        0.9841269841269841
+      ],
+      "macro_f1_mean": 0.9843179377013964,
+      "macro_f1_std": 0.0,
+      "macro_f1_values": [
+        0.9843179377013964
+      ],
+      "balanced_accuracy_mean": 0.9841269841269842,
+      "balanced_accuracy_std": 0.0,
+      "balanced_accuracy_values": [
+        0.9841269841269842
+      ],
+      "macro_precision_mean": 0.9857142857142858,
+      "macro_precision_std": 0.0,
+      "macro_precision_values": [
+        0.9857142857142858
+      ],
+      "macro_recall_mean": 0.9841269841269842,
+      "macro_recall_std": 0.0,
+      "macro_recall_values": [
+        0.9841269841269842
+      ],
+      "cohen_kappa_mean": 0.9814814814814815,
+      "cohen_kappa_std": 0.0,
+      "cohen_kappa_values": [
+        0.9814814814814815
+      ],
+      "mcc_mean": 0.9816979290486694,
+      "mcc_std": 0.0,
+      "mcc_values": [
+        0.9816979290486694
+      ],
+      "macro_auc_mean": 0.9997060552616109,
+      "macro_auc_std": 0.0,
+      "macro_auc_values": [
+        0.9997060552616109
+      ],
+      "top2_accuracy_mean": 0.9920634920634921,
+      "top2_accuracy_std": 0.0,
+      "top2_accuracy_values": [
+        0.9920634920634921
+      ],
+      "log_loss_mean": 0.09988163411617279,
+      "log_loss_std": 0.0,
+      "log_loss_values": [
+        0.09988163411617279
+      ],
+      "train_time_s_mean": 19651.0,
+      "train_time_s_std": 0.0,
+      "train_time_s_values": [
+        19651.0
+      ],
+      "epochs_run_mean": 40.0,
+      "epochs_run_std": 0.0,
+      "epochs_run_values": [
+        40.0
+      ],
+      "best_seed": 1
+    }
+  },
+  "ablations": {
+    "Full model (reference)": {
+      "tag": "abl_Full model (reference)",
+      "seeds": [
+        1
+      ],
+      "params": 604551,
+      "accuracy_mean": 0.9761904761904762,
+      "accuracy_std": 0.0,
+      "accuracy_values": [
+        0.9761904761904762
+      ],
+      "macro_f1_mean": 0.9761720904578047,
+      "macro_f1_std": 0.0,
+      "macro_f1_values": [
+        0.9761720904578047
+      ],
+      "balanced_accuracy_mean": 0.9761904761904763,
+      "balanced_accuracy_std": 0.0,
+      "balanced_accuracy_values": [
+        0.9761904761904763
+      ],
+      "macro_precision_mean": 0.9774436090225563,
+      "macro_precision_std": 0.0,
+      "macro_precision_values": [
+        0.9774436090225563
+      ],
+      "macro_recall_mean": 0.9761904761904763,
+      "macro_recall_std": 0.0,
+      "macro_recall_values": [
+        0.9761904761904763
+      ],
+      "cohen_kappa_mean": 0.9722222222222222,
+      "cohen_kappa_std": 0.0,
+      "cohen_kappa_values": [
+        0.9722222222222222
+      ],
+      "mcc_mean": 0.9724366278312291,
+      "mcc_std": 0.0,
+      "mcc_values": [
+        0.9724366278312291
+      ],
+      "macro_auc_mean": 0.998530276308054,
+      "macro_auc_std": 0.0,
+      "macro_auc_values": [
+        0.998530276308054
+      ],
+      "top2_accuracy_mean": 0.9841269841269841,
+      "top2_accuracy_std": 0.0,
+      "top2_accuracy_values": [
+        0.9841269841269841
+      ],
+      "log_loss_mean": 0.15834613144397736,
+      "log_loss_std": 0.0,
+      "log_loss_values": [
+        0.15834613144397736
+      ],
+      "train_time_s_mean": 2193.0,
+      "train_time_s_std": 0.0,
+      "train_time_s_values": [
+        2193.0
+      ],
+      "epochs_run_mean": 40.0,
+      "epochs_run_std": 0.0,
+      "epochs_run_values": [
+        40.0
+      ],
+      "best_seed": 1,
+      "purpose": "All components active: 2-layer BiLSTM 128/64, additive temporal attention, batch normalization, dropout, L2, 258-d features, 7x augmentation.",
+      "dim": 258
+    },
+    "Attention -> mean pooling": {
+      "tag": "abl_Attention -> mean pooling",
+      "seeds": [
+        1
+      ],
+      "params": 587911,
+      "accuracy_mean": 0.9603174603174603,
+      "accuracy_std": 0.0,
+      "accuracy_values": [
+        0.9603174603174603
+      ],
+      "macro_f1_mean": 0.9600159646599276,
+      "macro_f1_std": 0.0,
+      "macro_f1_values": [
+        0.9600159646599276
+      ],
+      "balanced_accuracy_mean": 0.9603174603174605,
+      "balanced_accuracy_std": 0.0,
+      "balanced_accuracy_values": [
+        0.9603174603174605
+      ],
+      "macro_precision_mean": 0.9627401837928152,
+      "macro_precision_std": 0.0,
+      "macro_precision_values": [
+        0.9627401837928152
+      ],
+      "macro_recall_mean": 0.9603174603174605,
+      "macro_recall_std": 0.0,
+      "macro_recall_values": [
+        0.9603174603174605
+      ],
+      "cohen_kappa_mean": 0.9537037037037037,
+      "cohen_kappa_std": 0.0,
+      "cohen_kappa_values": [
+        0.9537037037037037
+      ],
+      "mcc_mean": 0.9541946708938581,
+      "mcc_std": 0.0,
+      "mcc_values": [
+        0.9541946708938581
+      ],
+      "macro_auc_mean": 0.9993386243386244,
+      "macro_auc_std": 0.0,
+      "macro_auc_values": [
+        0.9993386243386244
+      ],
+      "top2_accuracy_mean": 0.9682539682539683,
+      "top2_accuracy_std": 0.0,
+      "top2_accuracy_values": [
+        0.9682539682539683
+      ],
+      "log_loss_mean": 0.17514093220233917,
+      "log_loss_std": 0.0,
+      "log_loss_values": [
+        0.17514093220233917
+      ],
+      "train_time_s_mean": 1098.6,
+      "train_time_s_std": 0.0,
+      "train_time_s_values": [
+        1098.6
+      ],
+      "epochs_run_mean": 40.0,
+      "epochs_run_std": 0.0,
+      "epochs_run_values": [
+        40.0
+      ],
+      "best_seed": 1,
+      "purpose": "All frames weighted equally; stroke frames diluted by preparation and retraction.",
+      "dim": 258
+    },
+    "Attention -> max pooling": {
+      "tag": "abl_Attention -> max pooling",
+      "seeds": [
+        1
+      ],
+      "params": 587911,
+      "accuracy_mean": 0.9761904761904762,
+      "accuracy_std": 0.0,
+      "accuracy_values": [
+        0.9761904761904762
+      ],
+      "macro_f1_mean": 0.9759319944193894,
+      "macro_f1_std": 0.0,
+      "macro_f1_values": [
+        0.9759319944193894
+      ],
+      "balanced_accuracy_mean": 0.9761904761904763,
+      "balanced_accuracy_std": 0.0,
+      "balanced_accuracy_values": [
+        0.9761904761904763
+      ],
+      "macro_precision_mean": 0.9774436090225563,
+      "macro_precision_std": 0.0,
+      "macro_precision_values": [
+        0.9774436090225563
+      ],
+      "macro_recall_mean": 0.9761904761904763,
+      "macro_recall_std": 0.0,
+      "macro_recall_values": [
+        0.9761904761904763
+      ],
+      "cohen_kappa_mean": 0.9722222222222222,
+      "cohen_kappa_std": 0.0,
+      "cohen_kappa_values": [
+        0.9722222222222222
+      ],
+      "mcc_mean": 0.9725081278958697,
+      "mcc_std": 0.0,
+      "mcc_values": [
+        0.9725081278958697
+      ],
+      "macro_auc_mean": 0.9992651381540271,
+      "macro_auc_std": 0.0,
+      "macro_auc_values": [
+        0.9992651381540271
+      ],
+      "top2_accuracy_mean": 0.9761904761904762,
+      "top2_accuracy_std": 0.0,
+      "top2_accuracy_values": [
+        0.9761904761904762
+      ],
+      "log_loss_mean": 0.17104457318782806,
+      "log_loss_std": 0.0,
+      "log_loss_values": [
+        0.17104457318782806
+      ],
+      "train_time_s_mean": 1109.4,
+      "train_time_s_std": 0.0,
+      "train_time_s_values": [
+        1109.4
+      ],
+      "epochs_run_mean": 40.0,
+      "epochs_run_std": 0.0,
+      "epochs_run_values": [
+        40.0
+      ],
+      "best_seed": 1,
+      "purpose": "Hard selection of one frame per feature rather than a soft distribution.",
+      "dim": 258
+    },
+    "Attention -> last hidden state": {
+      "tag": "abl_Attention -> last hidden state",
+      "seeds": [
+        1
+      ],
+      "params": 587911,
+      "accuracy_mean": 0.9603174603174603,
+      "accuracy_std": 0.0,
+      "accuracy_values": [
+        0.9603174603174603
+      ],
+      "macro_f1_mean": 0.9602191753894541,
+      "macro_f1_std": 0.0,
+      "macro_f1_values": [
+        0.9602191753894541
+      ],
+      "balanced_accuracy_mean": 0.9603174603174602,
+      "balanced_accuracy_std": 0.0,
+      "balanced_accuracy_values": [
+        0.9603174603174602
+      ],
+      "macro_precision_mean": 0.9634920634920636,
+      "macro_precision_std": 0.0,
+      "macro_precision_values": [
+        0.9634920634920636
+      ],
+      "macro_recall_mean": 0.9603174603174602,
+      "macro_recall_std": 0.0,
+      "macro_recall_values": [
+        0.9603174603174602
+      ],
+      "cohen_kappa_mean": 0.9537037037037037,
+      "cohen_kappa_std": 0.0,
+      "cohen_kappa_values": [
+        0.9537037037037037
+      ],
+      "mcc_mean": 0.9542648709800957,
+      "mcc_std": 0.0,
+      "mcc_values": [
+        0.9542648709800957
+      ],
+      "macro_auc_mean": 0.9972810111699001,
+      "macro_auc_std": 0.0,
+      "macro_auc_values": [
+        0.9972810111699001
+      ],
+      "top2_accuracy_mean": 0.9761904761904762,
+      "top2_accuracy_std": 0.0,
+      "top2_accuracy_values": [
+        0.9761904761904762
+      ],
+      "log_loss_mean": 0.14603592455387115,
+      "log_loss_std": 0.0,
+      "log_loss_values": [
+        0.14603592455387115
+      ],
+      "train_time_s_mean": 1729.4,
+      "train_time_s_std": 0.0,
+      "train_time_s_values": [
+        1729.4
+      ],
+      "epochs_run_mean": 40.0,
+      "epochs_run_std": 0.0,
+      "epochs_run_values": [
+        40.0
+      ],
+      "best_seed": 1,
+      "purpose": "Sequence compressed to its endpoint; equivalent to a plain BiLSTM.",
+      "dim": 258
+    },
+    "Attention: Luong general score": {
+      "tag": "abl_Attention: Luong general score",
+      "seeds": [
+        1
+      ],
+      "params": 604423,
+      "accuracy_mean": 0.9761904761904762,
+      "accuracy_std": 0.0,
+      "accuracy_values": [
+        0.9761904761904762
+      ],
+      "macro_f1_mean": 0.9759319944193894,
+      "macro_f1_std": 0.0,
+      "macro_f1_values": [
+        0.9759319944193894
+      ],
+      "balanced_accuracy_mean": 0.9761904761904763,
+      "balanced_accuracy_std": 0.0,
+      "balanced_accuracy_values": [
+        0.9761904761904763
+      ],
+      "macro_precision_mean": 0.9774436090225563,
+      "macro_precision_std": 0.0,
+      "macro_precision_values": [
+        0.9774436090225563
+      ],
+      "macro_recall_mean": 0.9761904761904763,
+      "macro_recall_std": 0.0,
+      "macro_recall_values": [
+        0.9761904761904763
+      ],
+      "cohen_kappa_mean": 0.9722222222222222,
+      "cohen_kappa_std": 0.0,
+      "cohen_kappa_values": [
+        0.9722222222222222
+      ],
+      "mcc_mean": 0.9725081278958697,
+      "mcc_std": 0.0,
+      "mcc_values": [
+        0.9725081278958697
+      ],
+      "macro_auc_mean": 0.9949294532627866,
+      "macro_auc_std": 0.0,
+      "macro_auc_values": [
+        0.9949294532627866
+      ],
+      "top2_accuracy_mean": 0.9841269841269841,
+      "top2_accuracy_std": 0.0,
+      "top2_accuracy_values": [
+        0.9841269841269841
+      ],
+      "log_loss_mean": 0.2079932540655136,
+      "log_loss_std": 0.0,
+      "log_loss_values": [
+        0.2079932540655136
+      ],
+      "train_time_s_mean": 1125.5,
+      "train_time_s_std": 0.0,
+      "train_time_s_values": [
+        1125.5
+      ],
+      "epochs_run_mean": 40.0,
+      "epochs_run_std": 0.0,
+      "epochs_run_values": [
+        40.0
+      ],
+      "best_seed": 1,
+      "purpose": "e_t = q^T W h_t instead of the additive score of Eq. (11).",
+      "dim": 258
+    },
+    "Attention: scaled dot product": {
+      "tag": "abl_Attention: scaled dot product",
+      "seeds": [
+        1
+      ],
+      "params": 588039,
+      "accuracy_mean": 0.9603174603174603,
+      "accuracy_std": 0.0,
+      "accuracy_values": [
+        0.9603174603174603
+      ],
+      "macro_f1_mean": 0.960646850562817,
+      "macro_f1_std": 0.0,
+      "macro_f1_values": [
+        0.960646850562817
+      ],
+      "balanced_accuracy_mean": 0.9603174603174605,
+      "balanced_accuracy_std": 0.0,
+      "balanced_accuracy_values": [
+        0.9603174603174605
+      ],
+      "macro_precision_mean": 0.9641365318057046,
+      "macro_precision_std": 0.0,
+      "macro_precision_values": [
+        0.9641365318057046
+      ],
+      "macro_recall_mean": 0.9603174603174605,
+      "macro_recall_std": 0.0,
+      "macro_recall_values": [
+        0.9603174603174605
+      ],
+      "cohen_kappa_mean": 0.9537037037037037,
+      "cohen_kappa_std": 0.0,
+      "cohen_kappa_values": [
+        0.9537037037037037
+      ],
+      "mcc_mean": 0.9542648709800957,
+      "mcc_std": 0.0,
+      "mcc_values": [
+        0.9542648709800957
+      ],
+      "macro_auc_mean": 0.9977954144620812,
+      "macro_auc_std": 0.0,
+      "macro_auc_values": [
+        0.9977954144620812
+      ],
+      "top2_accuracy_mean": 0.9761904761904762,
+      "top2_accuracy_std": 0.0,
+      "top2_accuracy_values": [
+        0.9761904761904762
+      ],
+      "log_loss_mean": 0.1779363602399826,
+      "log_loss_std": 0.0,
+      "log_loss_values": [
+        0.1779363602399826
+      ],
+      "train_time_s_mean": 1116.3,
+      "train_time_s_std": 0.0,
+      "train_time_s_values": [
+        1116.3
+      ],
+      "epochs_run_mean": 40.0,
+      "epochs_run_std": 0.0,
+      "epochs_run_values": [
+        40.0
+      ],
+      "best_seed": 1,
+      "purpose": "e_t = (q . h_t)/sqrt(d); the cheapest scoring function.",
+      "dim": 258
+    },
+    "Unidirectional (no backward pass)": {
+      "tag": "abl_Unidirectional (no backward pass)",
+      "seeds": [
+        1
+      ],
+      "params": 270087,
+      "accuracy_mean": 0.9523809523809523,
+      "accuracy_std": 0.0,
+      "accuracy_values": [
+        0.9523809523809523
+      ],
+      "macro_f1_mean": 0.9522373606407221,
+      "macro_f1_std": 0.0,
+      "macro_f1_values": [
+        0.9522373606407221
+      ],
+      "balanced_accuracy_mean": 0.9523809523809526,
+      "balanced_accuracy_std": 0.0,
+      "balanced_accuracy_values": [
+        0.9523809523809526
+      ],
+      "macro_precision_mean": 0.9561508814051937,
+      "macro_precision_std": 0.0,
+      "macro_precision_values": [
+        0.9561508814051937
+      ],
+      "macro_recall_mean": 0.9523809523809526,
+      "macro_recall_std": 0.0,
+      "macro_recall_values": [
+        0.9523809523809526
+      ],
+      "cohen_kappa_mean": 0.9444444444444444,
+      "cohen_kappa_std": 0.0,
+      "cohen_kappa_values": [
+        0.9444444444444444
+      ],
+      "mcc_mean": 0.9451392466015726,
+      "mcc_std": 0.0,
+      "mcc_values": [
+        0.9451392466015726
+      ],
+      "macro_auc_mean": 0.9956643151087595,
+      "macro_auc_std": 0.0,
+      "macro_auc_values": [
+        0.9956643151087595
+      ],
+      "top2_accuracy_mean": 0.9761904761904762,
+      "top2_accuracy_std": 0.0,
+      "top2_accuracy_values": [
+        0.9761904761904762
+      ],
+      "log_loss_mean": 0.18924790620803833,
+      "log_loss_std": 0.0,
+      "log_loss_values": [
+        0.18924790620803833
+      ],
+      "train_time_s_mean": 659.3,
+      "train_time_s_std": 0.0,
+      "train_time_s_values": [
+        659.3
+      ],
+      "epochs_run_mean": 40.0,
+      "epochs_run_std": 0.0,
+      "epochs_run_values": [
+        40.0
+      ],
+      "best_seed": 1,
+      "purpose": "Frames lack the context of the retraction that follows them.",
+      "dim": 258
+    },
+    "Single BiLSTM layer": {
+      "tag": "abl_Single BiLSTM layer",
+      "seeds": [
+        1
+      ],
+      "params": 505479,
+      "accuracy_mean": 0.9523809523809523,
+      "accuracy_std": 0.0,
+      "accuracy_values": [
+        0.9523809523809523
+      ],
+      "macro_f1_mean": 0.9524835852566945,
+      "macro_f1_std": 0.0,
+      "macro_f1_values": [
+        0.9524835852566945
+      ],
+      "balanced_accuracy_mean": 0.9523809523809523,
+      "balanced_accuracy_std": 0.0,
+      "balanced_accuracy_values": [
+        0.9523809523809523
+      ],
+      "macro_precision_mean": 0.955733170461167,
+      "macro_precision_std": 0.0,
+      "macro_precision_values": [
+        0.955733170461167
+      ],
+      "macro_recall_mean": 0.9523809523809523,
+      "macro_recall_std": 0.0,
+      "macro_recall_values": [
+        0.9523809523809523
+      ],
+      "cohen_kappa_mean": 0.9444444444444444,
+      "cohen_kappa_std": 0.0,
+      "cohen_kappa_values": [
+        0.9444444444444444
+      ],
+      "mcc_mean": 0.945000163494852,
+      "mcc_std": 0.0,
+      "mcc_values": [
+        0.945000163494852
+      ],
+      "macro_auc_mean": 0.9912551440329217,
+      "macro_auc_std": 0.0,
+      "macro_auc_values": [
+        0.9912551440329217
+      ],
+      "top2_accuracy_mean": 0.9682539682539683,
+      "top2_accuracy_std": 0.0,
+      "top2_accuracy_values": [
+        0.9682539682539683
+      ],
+      "log_loss_mean": 0.26595157384872437,
+      "log_loss_std": 0.0,
+      "log_loss_values": [
+        0.26595157384872437
+      ],
+      "train_time_s_mean": 720.6,
+      "train_time_s_std": 0.0,
+      "train_time_s_values": [
+        720.6
+      ],
+      "epochs_run_mean": 40.0,
+      "epochs_run_std": 0.0,
+      "epochs_run_values": [
+        40.0
+      ],
+      "best_seed": 1,
+      "purpose": "One layer must map raw landmark geometry straight to a classifiable representation.",
+      "dim": 258
+    },
+    "Three BiLSTM layers": {
+      "tag": "abl_Three BiLSTM layers",
+      "seeds": [
+        1
+      ],
+      "params": 703879,
+      "accuracy_mean": 0.9603174603174603,
+      "accuracy_std": 0.0,
+      "accuracy_values": [
+        0.9603174603174603
+      ],
+      "macro_f1_mean": 0.959832221176759,
+      "macro_f1_std": 0.0,
+      "macro_f1_values": [
+        0.959832221176759
+      ],
+      "balanced_accuracy_mean": 0.9603174603174602,
+      "balanced_accuracy_std": 0.0,
+      "balanced_accuracy_values": [
+        0.9603174603174602
+      ],
+      "macro_precision_mean": 0.9611037397415105,
+      "macro_precision_std": 0.0,
+      "macro_precision_values": [
+        0.9611037397415105
+      ],
+      "macro_recall_mean": 0.9603174603174602,
+      "macro_recall_std": 0.0,
+      "macro_recall_values": [
+        0.9603174603174602
+      ],
+      "cohen_kappa_mean": 0.9537037037037037,
+      "cohen_kappa_std": 0.0,
+      "cohen_kappa_values": [
+        0.9537037037037037
+      ],
+      "mcc_mean": 0.953984163554996,
+      "mcc_std": 0.0,
+      "mcc_values": [
+        0.953984163554996
+      ],
+      "macro_auc_mean": 0.9976484420928866,
+      "macro_auc_std": 0.0,
+      "macro_auc_values": [
+        0.9976484420928866
+      ],
+      "top2_accuracy_mean": 0.9920634920634921,
+      "top2_accuracy_std": 0.0,
+      "top2_accuracy_values": [
+        0.9920634920634921
+      ],
+      "log_loss_mean": 0.15707972645759583,
+      "log_loss_std": 0.0,
+      "log_loss_values": [
+        0.15707972645759583
+      ],
+      "train_time_s_mean": 1458.0,
+      "train_time_s_std": 0.0,
+      "train_time_s_values": [
+        1458.0
+      ],
+      "epochs_run_mean": 40.0,
+      "epochs_run_std": 0.0,
+      "epochs_run_values": [
+        40.0
+      ],
+      "best_seed": 1,
+      "purpose": "Tests whether the corpus supports a third layer. Justifies stopping at two.",
+      "dim": 258
+    },
+    "Narrower: 64/32 units": {
+      "tag": "abl_Narrower: 64/32 units",
+      "seeds": [
+        1
+      ],
+      "params": 229127,
+      "accuracy_mean": 0.9761904761904762,
+      "accuracy_std": 0.0,
+      "accuracy_values": [
+        0.9761904761904762
+      ],
+      "macro_f1_mean": 0.9763753011873313,
+      "macro_f1_std": 0.0,
+      "macro_f1_values": [
+        0.9763753011873313
+      ],
+      "balanced_accuracy_mean": 0.9761904761904763,
+      "balanced_accuracy_std": 0.0,
+      "balanced_accuracy_values": [
+        0.9761904761904763
+      ],
+      "macro_precision_mean": 0.9781954887218045,
+      "macro_precision_std": 0.0,
+      "macro_precision_values": [
+        0.9781954887218045
+      ],
+      "macro_recall_mean": 0.9761904761904763,
+      "macro_recall_std": 0.0,
+      "macro_recall_values": [
+        0.9761904761904763
+      ],
+      "cohen_kappa_mean": 0.9722222222222222,
+      "cohen_kappa_std": 0.0,
+      "cohen_kappa_values": [
+        0.9722222222222222
+      ],
+      "mcc_mean": 0.9725081278958697,
+      "mcc_std": 0.0,
+      "mcc_values": [
+        0.9725081278958697
+      ],
+      "macro_auc_mean": 1.0,
+      "macro_auc_std": 0.0,
+      "macro_auc_values": [
+        1.0
+      ],
+      "top2_accuracy_mean": 1.0,
+      "top2_accuracy_std": 0.0,
+      "top2_accuracy_values": [
+        1.0
+      ],
+      "log_loss_mean": 0.03727397695183754,
+      "log_loss_std": 0.0,
+      "log_loss_values": [
+        0.03727397695183754
+      ],
+      "train_time_s_mean": 642.7,
+      "train_time_s_std": 0.0,
+      "train_time_s_values": [
+        642.7
+      ],
+      "epochs_run_mean": 40.0,
+      "epochs_run_std": 0.0,
+      "epochs_run_values": [
+        40.0
+      ],
+      "best_seed": 1,
+      "purpose": "Half the published width. Justifies the 128/64 choice from below.",
+      "dim": 258
+    },
+    "Wider: 256/128 units": {
+      "tag": "abl_Wider: 256/128 units",
+      "seeds": [
+        1
+      ],
+      "params": 1822343,
+      "accuracy_mean": 0.9682539682539683,
+      "accuracy_std": 0.0,
+      "accuracy_values": [
+        0.9682539682539683
+      ],
+      "macro_f1_mean": 0.9680149537292395,
+      "macro_f1_std": 0.0,
+      "macro_f1_values": [
+        0.9680149537292395
+      ],
+      "balanced_accuracy_mean": 0.9682539682539683,
+      "balanced_accuracy_std": 0.0,
+      "balanced_accuracy_values": [
+        0.9682539682539683
+      ],
+      "macro_precision_mean": 0.9686225367339919,
+      "macro_precision_std": 0.0,
+      "macro_precision_values": [
+        0.9686225367339919
+      ],
+      "macro_recall_mean": 0.9682539682539683,
+      "macro_recall_std": 0.0,
+      "macro_recall_values": [
+        0.9682539682539683
+      ],
+      "cohen_kappa_mean": 0.962962962962963,
+      "cohen_kappa_std": 0.0,
+      "cohen_kappa_values": [
+        0.962962962962963
+      ],
+      "mcc_mean": 0.9631045231199884,
+      "mcc_std": 0.0,
+      "mcc_values": [
+        0.9631045231199884
+      ],
+      "macro_auc_mean": 0.9988977072310405,
+      "macro_auc_std": 0.0,
+      "macro_auc_values": [
+        0.9988977072310405
+      ],
+      "top2_accuracy_mean": 0.9841269841269841,
+      "top2_accuracy_std": 0.0,
+      "top2_accuracy_values": [
+        0.9841269841269841
+      ],
+      "log_loss_mean": 0.18070422112941742,
+      "log_loss_std": 0.0,
+      "log_loss_values": [
+        0.18070422112941742
+      ],
+      "train_time_s_mean": 3724.6,
+      "train_time_s_std": 0.0,
+      "train_time_s_values": [
+        3724.6
+      ],
+      "epochs_run_mean": 40.0,
+      "epochs_run_std": 0.0,
+      "epochs_run_values": [
+        40.0
+      ],
+      "best_seed": 1,
+      "purpose": "Double the published width. Justifies the 128/64 choice from above.",
+      "dim": 258
+    },
+    "No batch normalization": {
+      "tag": "abl_No batch normalization",
+      "seeds": [
+        1
+      ],
+      "params": 602503,
+      "accuracy_mean": 0.9682539682539683,
+      "accuracy_std": 0.0,
+      "accuracy_values": [
+        0.9682539682539683
+      ],
+      "macro_f1_mean": 0.9681925686348508,
+      "macro_f1_std": 0.0,
+      "macro_f1_values": [
+        0.9681925686348508
+      ],
+      "balanced_accuracy_mean": 0.9682539682539684,
+      "balanced_accuracy_std": 0.0,
+      "balanced_accuracy_values": [
+        0.9682539682539684
+      ],
+      "macro_precision_mean": 0.9706766917293234,
+      "macro_precision_std": 0.0,
+      "macro_precision_values": [
+        0.9706766917293234
+      ],
+      "macro_recall_mean": 0.9682539682539684,
+      "macro_recall_std": 0.0,
+      "macro_recall_values": [
+        0.9682539682539684
+      ],
+      "cohen_kappa_mean": 0.962962962962963,
+      "cohen_kappa_std": 0.0,
+      "cohen_kappa_values": [
+        0.962962962962963
+      ],
+      "mcc_mean": 0.9633878308252247,
+      "mcc_std": 0.0,
+      "mcc_values": [
+        0.9633878308252247
+      ],
+      "macro_auc_mean": 0.9993386243386243,
+      "macro_auc_std": 0.0,
+      "macro_auc_values": [
+        0.9993386243386243
+      ],
+      "top2_accuracy_mean": 0.9682539682539683,
+      "top2_accuracy_std": 0.0,
+      "top2_accuracy_values": [
+        0.9682539682539683
+      ],
+      "log_loss_mean": 0.15252836048603058,
+      "log_loss_std": 0.0,
+      "log_loss_values": [
+        0.15252836048603058
+      ],
+      "train_time_s_mean": 1745.9,
+      "train_time_s_std": 0.0,
+      "train_time_s_values": [
+        1745.9
+      ],
+      "epochs_run_mean": 40.0,
+      "epochs_run_std": 0.0,
+      "epochs_run_values": [
+        40.0
+      ],
+      "best_seed": 1,
+      "purpose": "Slower, noisier convergence of recurrent activations.",
+      "dim": 258
+    },
+    "No dropout": {
+      "tag": "abl_No dropout",
+      "seeds": [
+        1
+      ],
+      "params": 604551,
+      "accuracy_mean": 0.9761904761904762,
+      "accuracy_std": 0.0,
+      "accuracy_values": [
+        0.9761904761904762
+      ],
+      "macro_f1_mean": 0.9759319944193894,
+      "macro_f1_std": 0.0,
+      "macro_f1_values": [
+        0.9759319944193894
+      ],
+      "balanced_accuracy_mean": 0.9761904761904763,
+      "balanced_accuracy_std": 0.0,
+      "balanced_accuracy_values": [
+        0.9761904761904763
+      ],
+      "macro_precision_mean": 0.9774436090225563,
+      "macro_precision_std": 0.0,
+      "macro_precision_values": [
+        0.9774436090225563
+      ],
+      "macro_recall_mean": 0.9761904761904763,
+      "macro_recall_std": 0.0,
+      "macro_recall_values": [
+        0.9761904761904763
+      ],
+      "cohen_kappa_mean": 0.9722222222222222,
+      "cohen_kappa_std": 0.0,
+      "cohen_kappa_values": [
+        0.9722222222222222
+      ],
+      "mcc_mean": 0.9725081278958697,
+      "mcc_std": 0.0,
+      "mcc_values": [
+        0.9725081278958697
+      ],
+      "macro_auc_mean": 1.0,
+      "macro_auc_std": 0.0,
+      "macro_auc_values": [
+        1.0
+      ],
+      "top2_accuracy_mean": 0.9920634920634921,
+      "top2_accuracy_std": 0.0,
+      "top2_accuracy_values": [
+        0.9920634920634921
+      ],
+      "log_loss_mean": 0.08302406966686249,
+      "log_loss_std": 0.0,
+      "log_loss_values": [
+        0.08302406966686249
+      ],
+      "train_time_s_mean": 1577.8,
+      "train_time_s_std": 0.0,
+      "train_time_s_values": [
+        1577.8
+      ],
+      "epochs_run_mean": 40.0,
+      "epochs_run_std": 0.0,
+      "epochs_run_values": [
+        40.0
+      ],
+      "best_seed": 1,
+      "purpose": "Isolates the contribution of the dropout schedule in Table 6.",
+      "dim": 258
+    },
+    "No L2 penalty": {
+      "tag": "abl_No L2 penalty",
+      "seeds": [
+        1
+      ],
+      "params": 604551,
+      "accuracy_mean": 0.9523809523809523,
+      "accuracy_std": 0.0,
+      "accuracy_values": [
+        0.9523809523809523
+      ],
+      "macro_f1_mean": 0.9519620990209227,
+      "macro_f1_std": 0.0,
+      "macro_f1_values": [
+        0.9519620990209227
+      ],
+      "balanced_accuracy_mean": 0.9523809523809524,
+      "balanced_accuracy_std": 0.0,
+      "balanced_accuracy_values": [
+        0.9523809523809524
+      ],
+      "macro_precision_mean": 0.9566177348132235,
+      "macro_precision_std": 0.0,
+      "macro_precision_values": [
+        0.9566177348132235
+      ],
+      "macro_recall_mean": 0.9523809523809524,
+      "macro_recall_std": 0.0,
+      "macro_recall_values": [
+        0.9523809523809524
+      ],
+      "cohen_kappa_mean": 0.9444444444444444,
+      "cohen_kappa_std": 0.0,
+      "cohen_kappa_values": [
+        0.9444444444444444
+      ],
+      "mcc_mean": 0.9452783911362391,
+      "mcc_std": 0.0,
+      "mcc_values": [
+        0.9452783911362391
+      ],
+      "macro_auc_mean": 0.9954438565549676,
+      "macro_auc_std": 0.0,
+      "macro_auc_values": [
+        0.9954438565549676
+      ],
+      "top2_accuracy_mean": 0.9841269841269841,
+      "top2_accuracy_std": 0.0,
+      "top2_accuracy_values": [
+        0.9841269841269841
+      ],
+      "log_loss_mean": 0.35900217294692993,
+      "log_loss_std": 0.0,
+      "log_loss_values": [
+        0.35900217294692993
+      ],
+      "train_time_s_mean": 1731.3,
+      "train_time_s_std": 0.0,
+      "train_time_s_values": [
+        1731.3
+      ],
+      "epochs_run_mean": 40.0,
+      "epochs_run_std": 0.0,
+      "epochs_run_values": [
+        40.0
+      ],
+      "best_seed": 1,
+      "purpose": "Isolates the contribution of the 1e-3 weight decay in Table 6.",
+      "dim": 258
+    },
+    "Hands only (126-d)": {
+      "tag": "abl_Hands only (126-d)",
+      "seeds": [
+        1
+      ],
+      "params": 469383,
+      "accuracy_mean": 0.746031746031746,
+      "accuracy_std": 0.0,
+      "accuracy_values": [
+        0.746031746031746
+      ],
+      "macro_f1_mean": 0.7471581250925247,
+      "macro_f1_std": 0.0,
+      "macro_f1_values": [
+        0.7471581250925247
+      ],
+      "balanced_accuracy_mean": 0.746031746031746,
+      "balanced_accuracy_std": 0.0,
+      "balanced_accuracy_values": [
+        0.746031746031746
+      ],
+      "macro_precision_mean": 0.7612785105045167,
+      "macro_precision_std": 0.0,
+      "macro_precision_values": [
+        0.7612785105045167
+      ],
+      "macro_recall_mean": 0.746031746031746,
+      "macro_recall_std": 0.0,
+      "macro_recall_values": [
+        0.746031746031746
+      ],
+      "cohen_kappa_mean": 0.7037037037037037,
+      "cohen_kappa_std": 0.0,
+      "cohen_kappa_values": [
+        0.7037037037037037
+      ],
+      "mcc_mean": 0.7066699665182987,
+      "mcc_std": 0.0,
+      "mcc_values": [
+        0.7066699665182987
+      ],
+      "macro_auc_mean": 0.9491475602586714,
+      "macro_auc_std": 0.0,
+      "macro_auc_values": [
+        0.9491475602586714
+      ],
+      "top2_accuracy_mean": 0.9126984126984127,
+      "top2_accuracy_std": 0.0,
+      "top2_accuracy_values": [
+        0.9126984126984127
+      ],
+      "log_loss_mean": 0.7463099360466003,
+      "log_loss_std": 0.0,
+      "log_loss_values": [
+        0.7463099360466003
+      ],
+      "train_time_s_mean": 1984.3,
+      "train_time_s_std": 0.0,
+      "train_time_s_values": [
+        1984.3
+      ],
+      "epochs_run_mean": 40.0,
+      "epochs_run_std": 0.0,
+      "epochs_run_values": [
+        40.0
+      ],
+      "best_seed": 1,
+      "purpose": "Removes torso and arm trajectory context; keeps handshape and finger configuration.",
+      "dim": 126
+    },
+    "Pose only (132-d)": {
+      "tag": "abl_Pose only (132-d)",
+      "seeds": [
+        1
+      ],
+      "params": 475527,
+      "accuracy_mean": 0.9761904761904762,
+      "accuracy_std": 0.0,
+      "accuracy_values": [
+        0.9761904761904762
+      ],
+      "macro_f1_mean": 0.9759319944193894,
+      "macro_f1_std": 0.0,
+      "macro_f1_values": [
+        0.9759319944193894
+      ],
+      "balanced_accuracy_mean": 0.9761904761904763,
+      "balanced_accuracy_std": 0.0,
+      "balanced_accuracy_values": [
+        0.9761904761904763
+      ],
+      "macro_precision_mean": 0.9774436090225563,
+      "macro_precision_std": 0.0,
+      "macro_precision_values": [
+        0.9774436090225563
+      ],
+      "macro_recall_mean": 0.9761904761904763,
+      "macro_recall_std": 0.0,
+      "macro_recall_values": [
+        0.9761904761904763
+      ],
+      "cohen_kappa_mean": 0.9722222222222222,
+      "cohen_kappa_std": 0.0,
+      "cohen_kappa_values": [
+        0.9722222222222222
+      ],
+      "mcc_mean": 0.9725081278958697,
+      "mcc_std": 0.0,
+      "mcc_values": [
+        0.9725081278958697
+      ],
+      "macro_auc_mean": 0.9998530276308054,
+      "macro_auc_std": 0.0,
+      "macro_auc_values": [
+        0.9998530276308054
+      ],
+      "top2_accuracy_mean": 1.0,
+      "top2_accuracy_std": 0.0,
+      "top2_accuracy_values": [
+        1.0
+      ],
+      "log_loss_mean": 0.09863945096731186,
+      "log_loss_std": 0.0,
+      "log_loss_values": [
+        0.09863945096731186
+      ],
+      "train_time_s_mean": 1537.4,
+      "train_time_s_std": 0.0,
+      "train_time_s_values": [
+        1537.4
+      ],
+      "epochs_run_mean": 40.0,
+      "epochs_run_std": 0.0,
+      "epochs_run_values": [
+        40.0
+      ],
+      "best_seed": 1,
+      "purpose": "Removes handshape entirely; keeps body posture and gross arm trajectory.",
+      "dim": 132
+    },
+    "Plus full face (1662-d)": {
+      "tag": "abl_Plus full face (1662-d)",
+      "seeds": [
+        1
+      ],
+      "params": 2042247,
+      "accuracy_mean": 0.9444444444444444,
+      "accuracy_std": 0.0,
+      "accuracy_values": [
+        0.9444444444444444
+      ],
+      "macro_f1_mean": 0.9436742720577308,
+      "macro_f1_std": 0.0,
+      "macro_f1_values": [
+        0.9436742720577308
+      ],
+      "balanced_accuracy_mean": 0.9444444444444444,
+      "balanced_accuracy_std": 0.0,
+      "balanced_accuracy_values": [
+        0.9444444444444444
+      ],
+      "macro_precision_mean": 0.9498508175199903,
+      "macro_precision_std": 0.0,
+      "macro_precision_values": [
+        0.9498508175199903
+      ],
+      "macro_recall_mean": 0.9444444444444444,
+      "macro_recall_std": 0.0,
+      "macro_recall_values": [
+        0.9444444444444444
+      ],
+      "cohen_kappa_mean": 0.9351851851851852,
+      "cohen_kappa_std": 0.0,
+      "cohen_kappa_values": [
+        0.9351851851851852
+      ],
+      "mcc_mean": 0.9362866993304747,
+      "mcc_std": 0.0,
+      "mcc_values": [
+        0.9362866993304747
+      ],
+      "macro_auc_mean": 0.9988977072310405,
+      "macro_auc_std": 0.0,
+      "macro_auc_values": [
+        0.9988977072310405
+      ],
+      "top2_accuracy_mean": 0.9920634920634921,
+      "top2_accuracy_std": 0.0,
+      "top2_accuracy_values": [
+        0.9920634920634921
+      ],
+      "log_loss_mean": 0.14374606311321259,
+      "log_loss_std": 0.0,
+      "log_loss_values": [
+        0.14374606311321259
+      ],
+      "train_time_s_mean": 3289.7,
+      "train_time_s_std": 0.0,
+      "train_time_s_values": [
+        3289.7
+      ],
+      "epochs_run_mean": 40.0,
+      "epochs_run_std": 0.0,
+      "epochs_run_values": [
+        40.0
+      ],
+      "best_seed": 1,
+      "purpose": "REVIEWER A COMMENT 10. Adds all 468 MediaPipe face landmarks. Measures whether the non-manual channel helps on this vocabulary, instead of arguing the exclusion on parameter-budget grounds.",
+      "dim": 1662
+    },
+    "Plus compact face (378-d)": {
+      "tag": "abl_Plus compact face (378-d)",
+      "seeds": [
+        1
+      ],
+      "params": 727431,
+      "accuracy_mean": 0.9682539682539683,
+      "accuracy_std": 0.0,
+      "accuracy_values": [
+        0.9682539682539683
+      ],
+      "macro_f1_mean": 0.9679524725964355,
+      "macro_f1_std": 0.0,
+      "macro_f1_values": [
+        0.9679524725964355
+      ],
+      "balanced_accuracy_mean": 0.9682539682539684,
+      "balanced_accuracy_std": 0.0,
+      "balanced_accuracy_values": [
+        0.9682539682539684
+      ],
+      "macro_precision_mean": 0.9706766917293234,
+      "macro_precision_std": 0.0,
+      "macro_precision_values": [
+        0.9706766917293234
+      ],
+      "macro_recall_mean": 0.9682539682539684,
+      "macro_recall_std": 0.0,
+      "macro_recall_values": [
+        0.9682539682539684
+      ],
+      "cohen_kappa_mean": 0.962962962962963,
+      "cohen_kappa_std": 0.0,
+      "cohen_kappa_values": [
+        0.962962962962963
+      ],
+      "mcc_mean": 0.9634586968248664,
+      "mcc_std": 0.0,
+      "mcc_values": [
+        0.9634586968248664
+      ],
+      "macro_auc_mean": 0.9992651381540271,
+      "macro_auc_std": 0.0,
+      "macro_auc_values": [
+        0.9992651381540271
+      ],
+      "top2_accuracy_mean": 0.9761904761904762,
+      "top2_accuracy_std": 0.0,
+      "top2_accuracy_values": [
+        0.9761904761904762
+      ],
+      "log_loss_mean": 0.15717637538909912,
+      "log_loss_std": 0.0,
+      "log_loss_values": [
+        0.15717637538909912
+      ],
+      "train_time_s_mean": 1740.8,
+      "train_time_s_std": 0.0,
+      "train_time_s_values": [
+        1740.8
+      ],
+      "epochs_run_mean": 40.0,
+      "epochs_run_std": 0.0,
+      "epochs_run_values": [
+        40.0
+      ],
+      "best_seed": 1,
+      "purpose": "REVIEWER A COMMENT 10. Adds 40 selected lip, brow, eye and outline landmarks: the non-manual information at a fraction of the cost, so the face question is separated from the dimensionality question.",
+      "dim": 378
+    },
+    "Normalization: per_sequence": {
+      "tag": "abl_Normalization: per_sequence",
+      "seeds": [
+        1
+      ],
+      "params": 604551,
+      "accuracy_mean": 0.9444444444444444,
+      "accuracy_std": 0.0,
+      "accuracy_values": [
+        0.9444444444444444
+      ],
+      "macro_f1_mean": 0.9448744680058258,
+      "macro_f1_std": 0.0,
+      "macro_f1_values": [
+        0.9448744680058258
+      ],
+      "balanced_accuracy_mean": 0.9444444444444444,
+      "balanced_accuracy_std": 0.0,
+      "balanced_accuracy_values": [
+        0.9444444444444444
+      ],
+      "macro_precision_mean": 0.9495748299319728,
+      "macro_precision_std": 0.0,
+      "macro_precision_values": [
+        0.9495748299319728
+      ],
+      "macro_recall_mean": 0.9444444444444444,
+      "macro_recall_std": 0.0,
+      "macro_recall_values": [
+        0.9444444444444444
+      ],
+      "cohen_kappa_mean": 0.9351851851851852,
+      "cohen_kappa_std": 0.0,
+      "cohen_kappa_values": [
+        0.9351851851851852
+      ],
+      "mcc_mean": 0.935942058136728,
+      "mcc_std": 0.0,
+      "mcc_values": [
+        0.935942058136728
+      ],
+      "macro_auc_mean": 0.995517342739565,
+      "macro_auc_std": 0.0,
+      "macro_auc_values": [
+        0.995517342739565
+      ],
+      "top2_accuracy_mean": 0.9603174603174603,
+      "top2_accuracy_std": 0.0,
+      "top2_accuracy_values": [
+        0.9603174603174603
+      ],
+      "log_loss_mean": 0.25814566016197205,
+      "log_loss_std": 0.0,
+      "log_loss_values": [
+        0.25814566016197205
+      ],
+      "train_time_s_mean": 1957.9,
+      "train_time_s_std": 0.0,
+      "train_time_s_values": [
+        1957.9
+      ],
+      "epochs_run_mean": 40.0,
+      "epochs_run_std": 0.0,
+      "epochs_run_values": [
+        40.0
+      ],
+      "best_seed": 1,
+      "purpose": "REVIEWER B COMMENT 6. Same model, normalization scope changed to per_sequence. Justifies the default empirically.",
+      "dim": 258
+    },
+    "Normalization: per_frame": {
+      "tag": "abl_Normalization: per_frame",
+      "seeds": [
+        1
+      ],
+      "params": 604551,
+      "accuracy_mean": 0.9523809523809523,
+      "accuracy_std": 0.0,
+      "accuracy_values": [
+        0.9523809523809523
+      ],
+      "macro_f1_mean": 0.952520271007666,
+      "macro_f1_std": 0.0,
+      "macro_f1_values": [
+        0.952520271007666
+      ],
+      "balanced_accuracy_mean": 0.9523809523809523,
+      "balanced_accuracy_std": 0.0,
+      "balanced_accuracy_values": [
+        0.9523809523809523
+      ],
+      "macro_precision_mean": 0.9589883800410116,
+      "macro_precision_std": 0.0,
+      "macro_precision_values": [
+        0.9589883800410116
+      ],
+      "macro_recall_mean": 0.9523809523809523,
+      "macro_recall_std": 0.0,
+      "macro_recall_values": [
+        0.9523809523809523
+      ],
+      "cohen_kappa_mean": 0.9444444444444444,
+      "cohen_kappa_std": 0.0,
+      "cohen_kappa_values": [
+        0.9444444444444444
+      ],
+      "mcc_mean": 0.9455568646703804,
+      "mcc_std": 0.0,
+      "mcc_values": [
+        0.9455568646703804
+      ],
+      "macro_auc_mean": 0.997574955908289,
+      "macro_auc_std": 0.0,
+      "macro_auc_values": [
+        0.997574955908289
+      ],
+      "top2_accuracy_mean": 0.9761904761904762,
+      "top2_accuracy_std": 0.0,
+      "top2_accuracy_values": [
+        0.9761904761904762
+      ],
+      "log_loss_mean": 0.24003086984157562,
+      "log_loss_std": 0.0,
+      "log_loss_values": [
+        0.24003086984157562
+      ],
+      "train_time_s_mean": 2114.1,
+      "train_time_s_std": 0.0,
+      "train_time_s_values": [
+        2114.1
+      ],
+      "epochs_run_mean": 40.0,
+      "epochs_run_std": 0.0,
+      "epochs_run_values": [
+        40.0
+      ],
+      "best_seed": 1,
+      "purpose": "REVIEWER B COMMENT 6. Same model, normalization scope changed to per_frame. Justifies the default empirically.",
+      "dim": 258
+    },
+    "Normalization: body_anchored": {
+      "tag": "abl_Normalization: body_anchored",
+      "seeds": [
+        1
+      ],
+      "params": 604551,
+      "accuracy_mean": 0.9682539682539683,
+      "accuracy_std": 0.0,
+      "accuracy_values": [
+        0.9682539682539683
+      ],
+      "macro_f1_mean": 0.9679524725964355,
+      "macro_f1_std": 0.0,
+      "macro_f1_values": [
+        0.9679524725964355
+      ],
+      "balanced_accuracy_mean": 0.9682539682539684,
+      "balanced_accuracy_std": 0.0,
+      "balanced_accuracy_values": [
+        0.9682539682539684
+      ],
+      "macro_precision_mean": 0.9706766917293234,
+      "macro_precision_std": 0.0,
+      "macro_precision_values": [
+        0.9706766917293234
+      ],
+      "macro_recall_mean": 0.9682539682539684,
+      "macro_recall_std": 0.0,
+      "macro_recall_values": [
+        0.9682539682539684
+      ],
+      "cohen_kappa_mean": 0.962962962962963,
+      "cohen_kappa_std": 0.0,
+      "cohen_kappa_values": [
+        0.962962962962963
+      ],
+      "mcc_mean": 0.9634586968248664,
+      "mcc_std": 0.0,
+      "mcc_values": [
+        0.9634586968248664
+      ],
+      "macro_auc_mean": 0.9950029394473839,
+      "macro_auc_std": 0.0,
+      "macro_auc_values": [
+        0.9950029394473839
+      ],
+      "top2_accuracy_mean": 0.9841269841269841,
+      "top2_accuracy_std": 0.0,
+      "top2_accuracy_values": [
+        0.9841269841269841
+      ],
+      "log_loss_mean": 0.2165558934211731,
+      "log_loss_std": 0.0,
+      "log_loss_values": [
+        0.2165558934211731
+      ],
+      "train_time_s_mean": 1720.7,
+      "train_time_s_std": 0.0,
+      "train_time_s_values": [
+        1720.7
+      ],
+      "epochs_run_mean": 40.0,
+      "epochs_run_std": 0.0,
+      "epochs_run_values": [
+        40.0
+      ],
+      "best_seed": 1,
+      "purpose": "REVIEWER B COMMENT 6. Same model, normalization scope changed to body_anchored. Justifies the default empirically.",
+      "dim": 258
+    },
+    "Length: uniform resampling, not padding": {
+      "tag": "abl_Length: uniform resampling, not padding",
+      "seeds": [
+        1
+      ],
+      "params": 604551,
+      "accuracy_mean": 0.9523809523809523,
+      "accuracy_std": 0.0,
+      "accuracy_values": [
+        0.9523809523809523
+      ],
+      "macro_f1_mean": 0.9535073093179263,
+      "macro_f1_std": 0.0,
+      "macro_f1_values": [
+        0.9535073093179263
+      ],
+      "balanced_accuracy_mean": 0.9523809523809526,
+      "balanced_accuracy_std": 0.0,
+      "balanced_accuracy_values": [
+        0.9523809523809526
+      ],
+      "macro_precision_mean": 0.9614253023864008,
+      "macro_precision_std": 0.0,
+      "macro_precision_values": [
+        0.9614253023864008
+      ],
+      "macro_recall_mean": 0.9523809523809526,
+      "macro_recall_std": 0.0,
+      "macro_recall_values": [
+        0.9523809523809526
+      ],
+      "cohen_kappa_mean": 0.9444444444444444,
+      "cohen_kappa_std": 0.0,
+      "cohen_kappa_values": [
+        0.9444444444444444
+      ],
+      "mcc_mean": 0.9457658814060883,
+      "mcc_std": 0.0,
+      "mcc_values": [
+        0.9457658814060883
+      ],
+      "macro_auc_mean": 0.9983833039388595,
+      "macro_auc_std": 0.0,
+      "macro_auc_values": [
+        0.9983833039388595
+      ],
+      "top2_accuracy_mean": 0.9682539682539683,
+      "top2_accuracy_std": 0.0,
+      "top2_accuracy_values": [
+        0.9682539682539683
+      ],
+      "log_loss_mean": 0.20829710364341736,
+      "log_loss_std": 0.0,
+      "log_loss_values": [
+        0.20829710364341736
+      ],
+      "train_time_s_mean": 1548.9,
+      "train_time_s_std": 0.0,
+      "train_time_s_values": [
+        1548.9
+      ],
+      "epochs_run_mean": 40.0,
+      "epochs_run_std": 0.0,
+      "epochs_run_values": [
+        40.0
+      ],
+      "best_seed": 1,
+      "purpose": "Every clip is resampled onto exactly T frames instead of being zero-padded or truncated, so the window carries no padding at all. The alternative to the published pad/truncate scheme, and the one that matters most if the corpus is mostly padding.",
+      "dim": 258
+    },
+    "No data augmentation": {
+      "tag": "abl_No data augmentation",
+      "seeds": [
+        1
+      ],
+      "params": 604551,
+      "accuracy_mean": 0.9047619047619048,
+      "accuracy_std": 0.0,
+      "accuracy_values": [
+        0.9047619047619048
+      ],
+      "macro_f1_mean": 0.9039395610824184,
+      "macro_f1_std": 0.0,
+      "macro_f1_values": [
+        0.9039395610824184
+      ],
+      "balanced_accuracy_mean": 0.9047619047619049,
+      "balanced_accuracy_std": 0.0,
+      "balanced_accuracy_values": [
+        0.9047619047619049
+      ],
+      "macro_precision_mean": 0.9206982388096939,
+      "macro_precision_std": 0.0,
+      "macro_precision_values": [
+        0.9206982388096939
+      ],
+      "macro_recall_mean": 0.9047619047619049,
+      "macro_recall_std": 0.0,
+      "macro_recall_values": [
+        0.9047619047619049
+      ],
+      "cohen_kappa_mean": 0.8888888888888888,
+      "cohen_kappa_std": 0.0,
+      "cohen_kappa_values": [
+        0.8888888888888888
+      ],
+      "mcc_mean": 0.8923051780672838,
+      "mcc_std": 0.0,
+      "mcc_values": [
+        0.8923051780672838
+      ],
+      "macro_auc_mean": 0.9951499118165784,
+      "macro_auc_std": 0.0,
+      "macro_auc_values": [
+        0.9951499118165784
+      ],
+      "top2_accuracy_mean": 0.9761904761904762,
+      "top2_accuracy_std": 0.0,
+      "top2_accuracy_values": [
+        0.9761904761904762
+      ],
+      "log_loss_mean": 0.27472472190856934,
+      "log_loss_std": 0.0,
+      "log_loss_values": [
+        0.27472472190856934
+      ],
+      "train_time_s_mean": 362.0,
+      "train_time_s_std": 0.0,
+      "train_time_s_values": [
+        362.0
+      ],
+      "epochs_run_mean": 40.0,
+      "epochs_run_std": 0.0,
+      "epochs_run_values": [
+        40.0
+      ],
+      "best_seed": 1,
+      "purpose": "Trains on the 585 original training clips only. The single largest component in a corpus of this size.",
+      "dim": 258
+    }
+  }
+}

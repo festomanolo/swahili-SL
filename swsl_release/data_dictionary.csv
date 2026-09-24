@@ -1,0 +1,8 @@
+Array,Type and shape,Description
+X,"float32 (837, 60, 258)","Landmark sequences, zero-padded / truncated to 60 frames. Feature order per frame: 33 pose landmarks x (x, y, z, visibility) = 132, then 21 left-hand x (x, y, z) = 63, then 21 right-hand x (x, y, z) = 63. NOT normalized: apply the constants in normalization_constants.npz."
+y,"int16 (837,)",Class index into `classes`.
+classes,"object (7,)",Gesture labels in index order.
+signers,"object (837,)","Signer identity per clip, for signer-independent evaluation."
+clip_ids,"object (837,)","Stable clip identifier, ""class__filename""."
+raw_lengths,"int32 (837,)",Frame count before standardization.
+train_idx / val_idx / test_idx,int32,"The exact partition used in the paper (stratified, random_state=42). Augmentation is applied to train_idx only."

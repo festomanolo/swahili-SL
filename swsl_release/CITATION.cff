@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+title: "Swahili Sign Language (SwSL) isolated-gesture landmark corpus and BiLSTM-attention recognizer"
+message: "If you use this dataset or code, please cite the accompanying article."
+type: dataset
+authors:
+  - family-names: Nicholaus
+    given-names: Mrindoko
+  - family-names: Singano
+    given-names: Betty J.
+  - family-names: Mtowe
+    given-names: Robert J.
+  - family-names: William
+    given-names: Sinbad R.
+  - family-names: Magembe
+    given-names: Festo K.
+keywords:
+  - Swahili Sign Language
+  - isolated sign language recognition
+  - MediaPipe Holistic
+  - BiLSTM
+  - temporal attention
+  - low-resource languages
+license: CC-BY-4.0
+date-released: "2026-09-24"

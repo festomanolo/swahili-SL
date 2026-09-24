@@ -1,0 +1,13 @@
+# Versions this pipeline was run with
+tensorflow==2.16.2
+keras==3.15.1
+mediapipe==0.10.21
+numpy==1.26.4
+pandas==3.0.6
+opencv-python==4.11.0
+scikit-learn
+scipy
+statsmodels
+matplotlib
+transformers
+torch

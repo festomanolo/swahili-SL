@@ -1,0 +1,186 @@
+{
+  "n_clips_raw": {
+    "value": 837,
+    "note": "Section 3.2.3 and Table 3: raw clip count"
+  },
+  "n_classes": {
+    "value": 7,
+    "note": "everywhere the class count appears"
+  },
+  "n_signers": {
+    "value": 2,
+    "note": "Section 3.2.1"
+  },
+  "fps": {
+    "value": 30.0,
+    "note": "Section 3.2.2"
+  },
+  "frames_min": {
+    "value": 15,
+    "note": "Section 3.3 sequence-length range"
+  },
+  "frames_max": {
+    "value": 176,
+    "note": "Section 3.3 sequence-length range"
+  },
+  "n_clips_retained": {
+    "value": 837,
+    "note": "Section 3.2.4: clips passing the 90% landmark-quality threshold"
+  },
+  "pct_clips_padded": {
+    "value": 99.6,
+    "note": "Section 3.3: share of clips shorter than the 60-frame window"
+  },
+  "mean_live_frames": {
+    "value": 25.7,
+    "note": "Section 3.3: mean number of real (non-padded) frames per standardized sequence"
+  },
+  "n_train_original": {
+    "value": 585,
+    "note": "Section 4.1: training clips before augmentation"
+  },
+  "n_val": {
+    "value": 126,
+    "note": "Section 4.1: validation clips"
+  },
+  "n_test": {
+    "value": 126,
+    "note": "Section 4.1, Table 8, Figure 6: test clips"
+  },
+  "test_per_class": {
+    "value": 18,
+    "note": "Figure 6 caption: test samples per class"
+  },
+  "train_imbalance_ratio": {
+    "value": 1.012,
+    "note": "Section 3.6 / Eq. (15): whether class weighting is justified"
+  },
+  "proposed_accuracy_mean": {
+    "value": 97.62,
+    "note": "Abstract, Section 4.2, Table 7, Conclusions: headline accuracy (mean over seeds)"
+  },
+  "proposed_accuracy_std": {
+    "value": 0.0,
+    "note": "Table 7: cross-seed standard deviation of the proposed model"
+  },
+  "proposed_macro_f1_mean": {
+    "value": 97.62,
+    "note": "Table 7 and Table 8 macro-average row"
+  },
+  "proposed_best_accuracy": {
+    "value": 97.62,
+    "note": "Section 4.2: single-run checkpointed best model, if a single figure is quoted"
+  },
+  "strongest_baseline": {
+    "value": "Transformer encoder (2 layers)",
+    "note": "Section 4.3: the model the proposed one is compared to"
+  },
+  "strongest_baseline_accuracy": {
+    "value": 99.21,
+    "note": "Section 4.3 and Conclusions"
+  },
+  "margin_over_best_baseline_pp": {
+    "value": -1.59,
+    "note": "Section 4.3: margin in percentage points over the strongest same-corpus baseline"
+  },
+  "proposed_best_epoch": {
+    "value": 38,
+    "note": "Figure 4 caption: the epoch at which early stopping restored the best weights"
+  },
+  "proposed_train_val_gap_pp": {
+    "value": -1.73,
+    "note": "Section 4.2: the train-validation gap behind the regularization claim"
+  },
+  "expected_calibration_error": {
+    "value": 0.0164,
+    "note": "Section 4.7.2: whether the confidence threshold in Algorithm 1 is trustworthy"
+  },
+  "n_baselines_significantly_beaten": {
+    "value": 1,
+    "note": "Section 4.3: how many baselines the proposed model separates from at p<0.05"
+  },
+  "proposed_accuracy_ci": {
+    "value": "[94.44, 100.0]",
+    "note": "Abstract and Section 4.2: the 95% bootstrap interval to quote alongside the point accuracy"
+  },
+  "delta_full_face_pp": {
+    "value": -3.17,
+    "note": "Section 3.2.6 (A10): measured effect of adding the full 468-landmark face stream"
+  },
+  "delta_compact_face_pp": {
+    "value": -0.79,
+    "note": "Section 3.2.6 (A10): measured effect of adding the compact 40-landmark face stream"
+  },
+  "delta_hands_only_pp": {
+    "value": -23.02,
+    "note": "Section 4.5 (B16): measured feature importance, NOT a linguistic claim"
+  },
+  "delta_pose_only_pp": {
+    "value": 0.0,
+    "note": "Section 4.5 (B16): measured feature importance, NOT a linguistic claim"
+  },
+  "attention_entropy_ratio": {
+    "value": 0.4956,
+    "note": "Section 4.6: how much more selective than uniform the learned attention is"
+  },
+  "attention_top10_mass": {
+    "value": 0.96,
+    "note": "Section 4.6: share of attention mass on the ten most salient frames"
+  },
+  "signer_dependent_accuracy": {
+    "value": 97.62,
+    "note": "Abstract and Section 4.2: the headline figure, scoped to unseen repetitions by known signers"
+  },
+  "signer_independent_accuracy": {
+    "value": 55.8,
+    "note": "Section 4.1 and 4.7.1 (B15): leave-one-signer-out accuracy, to be reported alongside the headline figure"
+  },
+  "signer_generalization_gap_pp": {
+    "value": 41.82,
+    "note": "Section 4.7.1 (B15): how much of the headline figure depends on having seen the signer during training"
+  },
+  "proposed_parameters": {
+    "value": 604551,
+    "note": "Abstract, Table 5, Table 10, Table 11, Section 4.7.2: the true parameter count"
+  },
+  "proposed_macs_per_clip_M": {
+    "value": 34.65,
+    "note": "Section 4.7.2: computational cost per clip, if a complexity figure is quoted"
+  },
+  "proposed_model_size_mb": {
+    "value": 7.35,
+    "note": "Table 10: deployed model size"
+  },
+  "extraction_ms_per_frame": {
+    "value": 71.43,
+    "note": "Section 4.7.2 (B14): the cost that determines whether the pipeline is interactive"
+  },
+  "extraction_fps": {
+    "value": 14.0,
+    "note": "Section 4.7.2 (B14): sustained landmark-extraction frame rate"
+  },
+  "inference_ms_cpu": {
+    "value": 1301.74,
+    "note": "Section 4.7.2 (B14): classifier latency per clip on CPU"
+  },
+  "end_to_end_ms_cpu": {
+    "value": 5587.6,
+    "note": "Section 4.7.2 (B14): end-to-end delay for one clip on CPU"
+  },
+  "real_time_verdict": {
+    "value": "EXCEEDED by 38.1 ms per frame",
+    "note": "Section 4.7.1 (B14): whether the term \"real-time\" is defensible at all"
+  },
+  "tts_parameters": {
+    "value": 36284784,
+    "note": "Section 3.7: size of the pretrained synthesizer, for contrast with the recognition model. Makes the point that the large component is the one this study did not train."
+  },
+  "tts_mean_latency_ms": {
+    "value": 930.0,
+    "note": "Section 4.7.2: synthesis latency, if end-to-end interaction cost is quoted"
+  },
+  "release_dataset_mb": {
+    "value": 12.3,
+    "note": "Data Availability Statement: size of the releasable landmark corpus"
+  }
+}
