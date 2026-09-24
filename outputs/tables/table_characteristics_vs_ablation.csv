@@ -1,0 +1,8 @@
+Class (gloss),Handedness,Height vs shoulders,Frame-to-frame motion,Finger spread,"Recall, full model (%)","Recall, hands only (%)","Recall, pose only (%)",Loss without pose (pp),Loss without hands (pp)
+nenda (go),one-handed,-0.8580,0.1854,0.2643,94.4400,88.8900,94.4400,-5.5500,0.0000
+njema (good),one-handed,-1.2190,0.2138,0.2586,100.0000,88.8900,100.0000,-11.1100,0.0000
+mama (mother),one-handed,-1.1420,0.3879,0.2093,100.0000,44.4400,100.0000,-55.5600,0.0000
+hedhi (menstruation),one-handed,-0.8860,0.4024,0.2288,100.0000,66.6700,100.0000,-33.3300,0.0000
+kula (eat),one-handed,-1.5090,0.0371,0.1395,100.0000,77.7800,100.0000,-22.2200,0.0000
+baba (father),one-handed,-1.7900,0.1651,0.1777,94.4400,77.7800,88.8900,-16.6600,-5.5500
+habari (hi),one-handed,-0.7710,0.2237,0.2258,94.4400,77.7800,100.0000,-16.6600,5.5600
