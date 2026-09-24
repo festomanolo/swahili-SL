@@ -1,0 +1,110 @@
+[
+  {
+    "Comparator": "MLP (flattened landmarks)",
+    "Both correct": 98,
+    "Proposed only": 25,
+    "Comparator only": 1,
+    "Both wrong": 2,
+    "Discordant pairs": 26,
+    "Test": "chi-square with continuity correction",
+    "p-value (raw)": 6e-06,
+    "p-value (Holm-adjusted)": 5.8e-05,
+    "Significant at 0.05": "yes"
+  },
+  {
+    "Comparator": "CNN-LSTM (landmarks)",
+    "Both correct": 118,
+    "Proposed only": 5,
+    "Comparator only": 1,
+    "Both wrong": 2,
+    "Discordant pairs": 6,
+    "Test": "exact binomial",
+    "p-value (raw)": 0.21875,
+    "p-value (Holm-adjusted)": 1.0,
+    "Significant at 0.05": "no"
+  },
+  {
+    "Comparator": "Transformer encoder (2 layers)",
+    "Both correct": 123,
+    "Proposed only": 0,
+    "Comparator only": 2,
+    "Both wrong": 1,
+    "Discordant pairs": 2,
+    "Test": "exact binomial",
+    "p-value (raw)": 0.5,
+    "p-value (Holm-adjusted)": 1.0,
+    "Significant at 0.05": "no"
+  },
+  {
+    "Comparator": "BiLSTM (no attention)",
+    "Both correct": 120,
+    "Proposed only": 3,
+    "Comparator only": 1,
+    "Both wrong": 2,
+    "Discordant pairs": 4,
+    "Test": "exact binomial",
+    "p-value (raw)": 0.625,
+    "p-value (Holm-adjusted)": 1.0,
+    "Significant at 0.05": "no"
+  },
+  {
+    "Comparator": "Temporal CNN (1-D)",
+    "Both correct": 121,
+    "Proposed only": 2,
+    "Comparator only": 1,
+    "Both wrong": 2,
+    "Discordant pairs": 3,
+    "Test": "exact binomial",
+    "p-value (raw)": 1.0,
+    "p-value (Holm-adjusted)": 1.0,
+    "Significant at 0.05": "no"
+  },
+  {
+    "Comparator": "Unidirectional LSTM",
+    "Both correct": 122,
+    "Proposed only": 1,
+    "Comparator only": 2,
+    "Both wrong": 1,
+    "Discordant pairs": 3,
+    "Test": "exact binomial",
+    "p-value (raw)": 1.0,
+    "p-value (Holm-adjusted)": 1.0,
+    "Significant at 0.05": "no"
+  },
+  {
+    "Comparator": "Unidirectional GRU",
+    "Both correct": 121,
+    "Proposed only": 2,
+    "Comparator only": 1,
+    "Both wrong": 2,
+    "Discordant pairs": 3,
+    "Test": "exact binomial",
+    "p-value (raw)": 1.0,
+    "p-value (Holm-adjusted)": 1.0,
+    "Significant at 0.05": "no"
+  },
+  {
+    "Comparator": "BiGRU",
+    "Both correct": 122,
+    "Proposed only": 1,
+    "Comparator only": 2,
+    "Both wrong": 1,
+    "Discordant pairs": 3,
+    "Test": "exact binomial",
+    "p-value (raw)": 1.0,
+    "p-value (Holm-adjusted)": 1.0,
+    "Significant at 0.05": "no"
+  },
+  {
+    "Comparator": "ST-GCN (skeleton graph)",
+    "Both correct": 122,
+    "Proposed only": 1,
+    "Comparator only": 2,
+    "Both wrong": 1,
+    "Discordant pairs": 3,
+    "Test": "exact binomial",
+    "p-value (raw)": 1.0,
+    "p-value (Holm-adjusted)": 1.0,
+    "Significant at 0.05": "no"
+  }
+]

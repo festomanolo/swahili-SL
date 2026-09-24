@@ -1,0 +1,10 @@
+Comparator,Both correct,Proposed only,Comparator only,Both wrong,Discordant pairs,Test,p-value (raw),p-value (Holm-adjusted),Significant at 0.05
+MLP (flattened landmarks),98,25,1,2,26,chi-square with continuity correction,0.0000,0.0001,yes
+CNN-LSTM (landmarks),118,5,1,2,6,exact binomial,0.2188,1.0000,no
+Transformer encoder (2 layers),123,0,2,1,2,exact binomial,0.5000,1.0000,no
+BiLSTM (no attention),120,3,1,2,4,exact binomial,0.6250,1.0000,no
+Temporal CNN (1-D),121,2,1,2,3,exact binomial,1.0000,1.0000,no
+Unidirectional LSTM,122,1,2,1,3,exact binomial,1.0000,1.0000,no
+Unidirectional GRU,121,2,1,2,3,exact binomial,1.0000,1.0000,no
+BiGRU,122,1,2,1,3,exact binomial,1.0000,1.0000,no
+ST-GCN (skeleton graph),122,1,2,1,3,exact binomial,1.0000,1.0000,no

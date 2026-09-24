@@ -1,0 +1,34 @@
+{
+  "reviewer_comment": "Reviewer A comment 5",
+  "type": "additive (Bahdanau-style) attention over the time axis, self-queried",
+  "input": {
+    "source": "output sequence of the second BiLSTM layer",
+    "shape": "(batch, 60, 128)",
+    "h_t": "concatenation of the 64-unit forward and 64-unit backward hidden states",
+    "representation_dim_d": 128
+  },
+  "score_equation": "e_t = v^T tanh(W h_t + b)        (manuscript Eq. 11)",
+  "score_parameters": {
+    "W": "(128, 128)",
+    "b": "(128,)",
+    "v": "(128, 1)",
+    "total": 16640,
+    "note": "The learned vector v acts as a fixed query, so the mechanism needs no external query and introduces no recurrence of its own."
+  },
+  "weight_equation": "alpha_t = exp(e_t) / sum_k exp(e_k)   over the 60 time steps (manuscript Eq. 12)",
+  "masking": "Zero-padded frames are detected by the input Masking layer and their scores are set to -1e9 before the softmax, so they receive exactly zero weight.",
+  "output_equation": "c = sum_t alpha_t h_t   (manuscript Eq. 13)",
+  "output_shape": "(batch, 128)",
+  "consumed_by": "the dense classification head, in place of the last hidden state",
+  "interpretability": "alpha is a proper distribution over the 60 frames and is therefore read directly as a per-frame saliency curve.",
+  "alternatives_measured": [
+    "additive (Bahdanau)",
+    "general (Luong)",
+    "scaled dot product with a learned query",
+    "mean pooling",
+    "max pooling",
+    "last hidden state"
+  ],
+  "measured_parameter_count": 16640,
+  "parameter_count_in_published_table_5": 16577
+}

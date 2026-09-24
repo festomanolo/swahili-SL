@@ -1,0 +1,10 @@
+Comparator,Proposed (mean %),Comparator (mean %),Mean difference (pp),Seeds,Paired t p-value,Wilcoxon p-value,Cohen's d_z
+MLP (flattened landmarks),97.6200,78.5700,19.0500,1,,,
+CNN-LSTM (landmarks),97.6200,94.4400,3.1700,1,,,
+BiLSTM (no attention),97.6200,96.0300,1.5900,1,,,
+Temporal CNN (1-D),97.6200,96.8300,0.7900,1,,,
+Unidirectional GRU,97.6200,96.8300,0.7900,1,,,
+Unidirectional LSTM,97.6200,98.4100,-0.7900,1,,,
+BiGRU,97.6200,98.4100,-0.7900,1,,,
+ST-GCN (skeleton graph),97.6200,98.4100,-0.7900,1,,,
+Transformer encoder (2 layers),97.6200,99.2100,-1.5900,1,,,

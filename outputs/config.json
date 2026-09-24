@@ -1,0 +1,155 @@
+{
+  "manuscript": "A Swahili Sign Language Recognition Using Bidirectional LSTM with Temporal Attention (JCTA revision)",
+  "preset": "quick",
+  "classes": [
+    "nenda",
+    "njema",
+    "mama",
+    "hedhi",
+    "kula",
+    "baba",
+    "habari"
+  ],
+  "class_glosses": {
+    "nenda": "go",
+    "njema": "good",
+    "mama": "mother",
+    "hedhi": "menstruation",
+    "kula": "eat",
+    "baba": "father",
+    "habari": "hi"
+  },
+  "signers": [
+    "Britney",
+    "Grace"
+  ],
+  "corpus": {
+    "source": "/Volumes/MacX/Sw/raw_videos",
+    "archive_clips": 935,
+    "selected_classes": 7,
+    "balance_per_signer": 60,
+    "balance_seed": 7,
+    "study_clips": 837,
+    "clips_retained_after_quality_filter": 837,
+    "quality_threshold_pose_detection": 0.0
+  },
+  "extraction": {
+    "detector": "MediaPipe Holistic",
+    "mediapipe_version": "0.10.21",
+    "model_complexity": 1,
+    "min_detection_confidence": 0.5,
+    "min_tracking_confidence": 0.5,
+    "refine_face_landmarks": false,
+    "smooth_landmarks": true,
+    "pose_values_per_frame": 132,
+    "hand_values_per_frame_each": 63,
+    "face_values_per_frame": 1404,
+    "primary_feature_dim": 258,
+    "cached_feature_dim": 1662
+  },
+  "sequence": {
+    "length": 60,
+    "length_mode": "pad_truncate",
+    "raw_length_min": 15,
+    "raw_length_max": 176,
+    "padding_value": 0.0,
+    "masking": "Masking layer at the input"
+  },
+  "normalization": {
+    "mode": "train_stats",
+    "description": "min/max per coordinate dimension over all non-padded frames of the training split only; constants are fixed and released with the model",
+    "fitted_dims": 258,
+    "min_of_mins": -1.6914385557174683,
+    "max_of_maxes": 2.017017364501953
+  },
+  "split": {
+    "order": "split first, then augment the training partition only",
+    "fractions": [
+      0.7,
+      0.15,
+      0.15
+    ],
+    "stratified_by": "class label",
+    "random_state": 42,
+    "signer_independent": false,
+    "n_train_original": 585,
+    "n_train_augmented": 4095,
+    "n_val": 126,
+    "n_test": 126
+  },
+  "augmentation": {
+    "applied_to": "training partition only",
+    "variants": [
+      "original",
+      "stretch_0.9",
+      "stretch_1.1",
+      "noise_0.01",
+      "noise_0.02",
+      "shift_+5",
+      "shift_-5"
+    ],
+    "factor": 7,
+    "stretch_alpha": [
+      0.9,
+      1.1
+    ],
+    "noise_sigma": [
+      0.01,
+      0.02
+    ],
+    "shift_frames": [
+      5,
+      -5
+    ],
+    "seed": 1234
+  },
+  "training": {
+    "optimizer": "Adam",
+    "beta_1": 0.9,
+    "beta_2": 0.999,
+    "learning_rate": 0.0005,
+    "clipnorm": 1.0,
+    "l2": 0.001,
+    "input_dropout": 0.2,
+    "cudnn_fast_path": true,
+    "dense_dropout": [
+      0.4,
+      0.3
+    ],
+    "batch_size": 32,
+    "max_epochs": 40,
+    "seeds": [
+      1
+    ],
+    "early_stopping": {
+      "monitor": "val_loss",
+      "patience": 30,
+      "restore_best_weights": true
+    },
+    "reduce_lr_on_plateau": {
+      "monitor": "val_loss",
+      "factor": 0.5,
+      "patience": 10,
+      "min_lr": 1e-06
+    },
+    "model_checkpoint": "best val_accuracy",
+    "loss": "sparse categorical cross-entropy",
+    "class_weighting": "Imbalance ratio in the augmented training partition is 1.0120. Class weighting is DISABLED because it would be a no-op. The manuscript should state that the balanced factorial design survives the stratified split, so inverse-frequency weighting was not required."
+  },
+  "environment": {
+    "python": "3.12.8",
+    "platform": "macOS-26.5.2-x86_64-i386-64bit",
+    "processor": "i386",
+    "cpu_count": 8,
+    "tensorflow": "2.16.2",
+    "keras": "3.15.1",
+    "numpy": "1.26.4",
+    "pandas": "3.0.6",
+    "opencv": "4.11.0",
+    "mediapipe": "0.10.21",
+    "gpu": null,
+    "gpu_name": null,
+    "run_started_utc": "2026-09-23T16:49:02Z",
+    "mediapipe_worker_python": "3.12.8"
+  }
+}

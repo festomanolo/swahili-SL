@@ -1,0 +1,11 @@
+Model,Accuracy (%),95% CI lower (%),95% CI upper (%),CI width (pp),Difference from proposed (pp),Difference 95% CI (pp),CI excludes zero
+Transformer encoder (2 layers),99.2100,97.6200,100.0000,2.3800,-1.5400,"[-3.97, 0.00]",no
+Unidirectional LSTM,98.4100,96.0300,100.0000,3.9700,-0.7700,"[-3.17, 1.59]",no
+BiGRU,98.4100,96.0300,100.0000,3.9700,-0.7700,"[-3.19, 1.59]",no
+ST-GCN (skeleton graph),98.4100,96.0300,100.0000,3.9700,-0.7200,"[-3.97, 1.59]",no
+BiLSTM + temporal attention (proposed),97.6200,94.4400,100.0000,5.5600,0.0000,-,-
+Temporal CNN (1-D),96.8300,92.8600,99.2100,6.3500,0.8500,"[-1.59, 3.97]",no
+Unidirectional GRU,96.8300,93.6500,99.2100,5.5600,0.8000,"[-1.59, 3.17]",no
+BiLSTM (no attention),96.0300,92.0600,99.2100,7.1400,1.6200,"[-1.59, 4.76]",no
+CNN-LSTM (landmarks),94.4400,89.6800,98.4100,8.7300,3.2100,"[-0.02, 7.14]",no
+MLP (flattened landmarks),78.5700,71.4300,84.9200,13.4900,19.0500,"[11.90, 26.19]",yes
