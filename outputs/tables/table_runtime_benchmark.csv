@@ -1,0 +1,7 @@
+Stage,Unit,Mean,p50,p95,p99,Derived
+MediaPipe Holistic landmark extraction (CPU),ms per frame,71.43,68.91,86.35,93.83,14.0 fps sustained
+"Recognition inference, batch 1 (CPU)",ms per 60-frame clip,1301.74,1285.66,1407.88,1503.47,"i386, 8 logical cores"
+"Recognition throughput, batch 64",clips per second,48.3,,,,20.70 ms per clip amortized
+"End-to-end, one 60-frame clip (CPU: extraction + inference)",ms,5587.6,,,,5.59 s; the clip itself lasts 2.00 s at 30 fps
+Real-time factor (extraction time / clip duration),ratio,2.794,,,,below 1.0 means the pipeline keeps up with the stream
+Per-frame budget at 30 fps (33.3 ms),verdict,,,,,EXCEEDED by 38.1 ms per frame

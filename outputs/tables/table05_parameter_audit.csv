@@ -1,0 +1,15 @@
+No.,Layer,Type,Output shape,Parameters,MACs per clip
+1,landmark_sequence,InputLayer,"(None, 60, 258)",0,0
+2,masking,Masking,"(None, 60, 258)",0,0
+3,bidirectional,Bidirectional,"(None, 60, 256)",396288,23777280
+4,batch_normalization,BatchNormalization,"(None, 60, 256)",1024,0
+5,bidirectional_1,Bidirectional,"(None, 60, 128)",164352,9861120
+6,temporal_attention,TemporalAttention,"(None, 128)",16640,990720
+7,batch_normalization_1,BatchNormalization,"(None, 128)",512,0
+8,dense,Dense,"(None, 128)",16512,16384
+9,dropout,Dropout,"(None, 128)",0,0
+10,batch_normalization_2,BatchNormalization,"(None, 128)",512,0
+11,dense_1,Dense,"(None, 64)",8256,8192
+12,dropout_1,Dropout,"(None, 64)",0,0
+13,class_posterior,Dense,"(None, 7)",455,448
+,TOTAL,,,604551,34654144

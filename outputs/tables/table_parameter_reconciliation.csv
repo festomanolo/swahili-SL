@@ -1,0 +1,9 @@
+Quantity,Measured,Published / claimed
+Total parameters,"604,551","177,607"
+Trainable parameters,"603,527","177,607"
+Non-trainable (batch-norm statistics),"1,024",not stated
+BiLSTM-1 parameters,"396,288","396,288"
+Attention parameters,"16,640","16,577"
+MACs per 60-frame clip,34.65 M,not stated
+Weights at float32,2.42 MB,not stated
+Serialized .keras file,7.35 MB,not stated

@@ -1,0 +1,11 @@
+Model,Parameters,Accuracy (%),Std (%),Accuracy per 100k parameters,Train time (s)
+Unidirectional GRU,204551,96,0,47,1040
+Temporal CNN (1-D),224839,96,0,43,331
+ST-GCN (skeleton graph),231417,98,0,42,19651
+Unidirectional LSTM,265863,98,0,37,1070
+CNN-LSTM (landmarks),323591,94,0,29,666
+Transformer encoder (2 layers),332039,99,0,29,774
+BiGRU,448903,98,0,21,1287
+BiLSTM (no attention),587911,96,0,16,1729
+BiLSTM + temporal attention (proposed),604551,97,0,16,1713
+MLP (flattened landmarks),4022279,78,0,1,543
