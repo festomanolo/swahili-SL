@@ -1,0 +1,32 @@
+{
+  "reviewer_comments": [
+    "B1",
+    "B7",
+    "B8",
+    "B9"
+  ],
+  "role_in_the_system": "downstream, pretrained speech-synthesis backend. It receives a label the classifier has already produced and cannot change any recognition figure reported in this paper.",
+  "checkpoint": "facebook/mms-tts-swh",
+  "architecture": "VITS (conditional VAE with adversarial training, Kim et al. 2021), as released by the Massively Multilingual Speech project",
+  "language_code": "swh (Swahili)",
+  "fine_tuned": false,
+  "adapted_to_sign_language_vocabulary": false,
+  "speaker_conditioning": "none; the checkpoint provides a single voice",
+  "transformers_version": "4.44.2",
+  "torch_version": "2.2.2",
+  "sampling_rate_hz": 16000,
+  "parameters": 36284784,
+  "vocab_size": 39,
+  "generation_parameters": {
+    "noise_scale": 0.667,
+    "noise_scale_duration": 0.8,
+    "speaking_rate": 1.0,
+    "flow_size": 192,
+    "hidden_size": 192,
+    "note": "read from the released configuration; no value was overridden"
+  },
+  "inference": "single forward pass, torch.no_grad(), float32, CPU; the waveform is written straight to a 16-bit PCM buffer and played back",
+  "text_normalization": "lowercase, then strip every character outside the Swahili alphabet and whitespace",
+  "evaluation_in_this_study": "none. No intelligibility or naturalness measurement is claimed. A listening study with Swahili-speaking participants is stated as future work.",
+  "error_propagation": "the stages are sequential and the synthesizer cannot detect an implausible input, so a misclassification is rendered as fluent, confident speech. See the confidence-threshold sweep for the mitigation."
+}

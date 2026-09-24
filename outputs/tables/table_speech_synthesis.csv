@@ -1,0 +1,8 @@
+Class,Swahili text,Tokens,Audio duration (s),Synthesis latency (ms),Real-time factor,File
+nenda,nenda,11,0.8480,2256.8000,2.6613,audio/nenda.wav
+njema,njema,11,1.0560,786.5000,0.7448,audio/njema.wav
+mama,mama,9,0.4160,822.4000,1.9770,audio/mama.wav
+hedhi,hedhi,11,0.7200,537.8000,0.7470,audio/hedhi.wav
+kula,kula,9,0.7840,676.2000,0.8625,audio/kula.wav
+baba,baba,9,0.5120,669.8000,1.3082,audio/baba.wav
+habari,habari,13,1.0400,760.7000,0.7315,audio/habari.wav

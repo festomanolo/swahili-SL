@@ -1,0 +1,4 @@
+Test clip,Signer,True class,Predicted,Confidence,Correct,Spoken text,Audio
+baba__Britney_004,Britney,baba,baba,0.9996,True,baba,audio/baba.wav
+baba__Britney_005,Britney,baba,baba,0.9998,True,baba,audio/baba.wav
+baba__Britney_017,Britney,baba,baba,0.9997,True,baba,audio/baba.wav
