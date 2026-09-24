@@ -1,4 +1,4 @@
-# Ignore raw video files (very large media assets)
+# Raw video files (large media assets)
 raw_videos/
 *.mp4
 *.avi
@@ -12,25 +12,29 @@ raw_videos/
 ._*
 .Spotlight-V100
 .Trashes
-ehthumbs.db
-Thumbs.db
 
-# Python & Jupyter
+# Python & Virtual Environments
 __pycache__/
 *.py[cod]
-*$py.class
-*.so
-.Python
-env/
-venv/
 .venv/
-ENV/
+venv/
+env/
 .ipynb_checkpoints/
 
-# Pipeline execution outputs and large archives
-outputs/
+# Large arrays, models and weight checkpoints
+*.npy
+*.npz
+*.keras
+*.h5
+*.weights.h5
+outputs/ckpt/
+outputs/models/
 runs/
+frame_cache/
+landmark_cache/
 SwSL_JCTA_Revision/
 swsl_results.zip
 swsl_release_bundle.zip
-*.tar.gz
+pipeline_execution.log
+*.bak
+test_spawn.py
