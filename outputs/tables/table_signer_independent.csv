@@ -1,0 +1,4 @@
+Held-out signer,Trained on,Train clips (original),Train sequences (augmented),Test clips,Accuracy (%),Macro F1 (%),Balanced accuracy (%)
+Britney,Grace,357,2499,418,56.70 +/- 0.00,47.73 +/- 0.00,56.65 +/- 0.00
+Grace,Britney,356,2492,419,54.89 +/- 0.00,51.62 +/- 0.00,55.00 +/- 0.00
+Mean over folds,,,,,55.80,49.67,
