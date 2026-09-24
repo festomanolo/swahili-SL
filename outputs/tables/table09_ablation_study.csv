@@ -1,0 +1,24 @@
+Ablated variant,Input dim,Test accuracy (%),Std (%),Macro F1 (%),Delta vs full (pp),Parameters,Interpretation
+Full model (reference),258,97.6200,0.0000,97.6200,0.0000,"604,551","All components active: 2-layer BiLSTM 128/64, additive temporal attention, batch normalization, dropout, L2, 258-d features, 7x augmentation."
+Narrower: 64/32 units,258,97.6200,0.0000,97.6400,0.0000,"229,127",Half the published width. Justifies the 128/64 choice from below.
+Attention -> max pooling,258,97.6200,0.0000,97.5900,0.0000,"587,911",Hard selection of one frame per feature rather than a soft distribution.
+Attention: Luong general score,258,97.6200,0.0000,97.5900,0.0000,"604,423",e_t = q^T W h_t instead of the additive score of Eq. (11).
+Pose only (132-d),132,97.6200,0.0000,97.5900,0.0000,"475,527",Removes handshape entirely; keeps body posture and gross arm trajectory.
+No dropout,258,97.6200,0.0000,97.5900,0.0000,"604,551",Isolates the contribution of the dropout schedule in Table 6.
+Normalization: body_anchored,258,96.8300,0.0000,96.8000,-0.7900,"604,551","REVIEWER B COMMENT 6. Same model, normalization scope changed to body_anchored. Justifies the default empirically."
+Plus compact face (378-d),378,96.8300,0.0000,96.8000,-0.7900,"727,431","REVIEWER A COMMENT 10. Adds 40 selected lip, brow, eye and outline landmarks: the non-manual information at a fraction of the cost, so the face question is separated from the dimensionality question."
+Wider: 256/128 units,258,96.8300,0.0000,96.8000,-0.7900,"1,822,343",Double the published width. Justifies the 128/64 choice from above.
+No batch normalization,258,96.8300,0.0000,96.8200,-0.7900,"602,503","Slower, noisier convergence of recurrent activations."
+Three BiLSTM layers,258,96.0300,0.0000,95.9800,-1.5900,"703,879",Tests whether the corpus supports a third layer. Justifies stopping at two.
+Attention -> mean pooling,258,96.0300,0.0000,96.0000,-1.5900,"587,911",All frames weighted equally; stroke frames diluted by preparation and retraction.
+Attention: scaled dot product,258,96.0300,0.0000,96.0600,-1.5900,"588,039",e_t = (q . h_t)/sqrt(d); the cheapest scoring function.
+Attention -> last hidden state,258,96.0300,0.0000,96.0200,-1.5900,"587,911",Sequence compressed to its endpoint; equivalent to a plain BiLSTM.
+Single BiLSTM layer,258,95.2400,0.0000,95.2500,-2.3800,"505,479",One layer must map raw landmark geometry straight to a classifiable representation.
+No L2 penalty,258,95.2400,0.0000,95.2000,-2.3800,"604,551",Isolates the contribution of the 1e-3 weight decay in Table 6.
+Unidirectional (no backward pass),258,95.2400,0.0000,95.2200,-2.3800,"270,087",Frames lack the context of the retraction that follows them.
+Normalization: per_frame,258,95.2400,0.0000,95.2500,-2.3800,"604,551","REVIEWER B COMMENT 6. Same model, normalization scope changed to per_frame. Justifies the default empirically."
+"Length: uniform resampling, not padding",258,95.2400,0.0000,95.3500,-2.3800,"604,551","Every clip is resampled onto exactly T frames instead of being zero-padded or truncated, so the window carries no padding at all. The alternative to the published pad/truncate scheme, and the one that matters most if the corpus is mostly padding."
+Plus full face (1662-d),1662,94.4400,0.0000,94.3700,-3.1700,"2,042,247","REVIEWER A COMMENT 10. Adds all 468 MediaPipe face landmarks. Measures whether the non-manual channel helps on this vocabulary, instead of arguing the exclusion on parameter-budget grounds."
+Normalization: per_sequence,258,94.4400,0.0000,94.4900,-3.1700,"604,551","REVIEWER B COMMENT 6. Same model, normalization scope changed to per_sequence. Justifies the default empirically."
+No data augmentation,258,90.4800,0.0000,90.3900,-7.1400,"604,551",Trains on the 585 original training clips only. The single largest component in a corpus of this size.
+Hands only (126-d),126,74.6000,0.0000,74.7200,-23.0200,"469,383",Removes torso and arm trajectory context; keeps handshape and finger configuration.
