@@ -1,0 +1,11 @@
+Metric,Best run,Mean over 1 seeds,Std
+Accuracy (%),97.6190,97.6190,0.0000
+Balanced accuracy (%),97.6190,97.6190,0.0000
+Macro precision (%),97.7444,97.7444,0.0000
+Macro recall (%),97.6190,97.6190,0.0000
+Macro F1 (%),97.6172,97.6172,0.0000
+Top-2 accuracy (%),98.4127,98.4127,0.0000
+Cohen kappa,0.9722,0.9722,0.0000
+Matthews correlation,0.9724,0.9724,0.0000
+Macro ROC AUC,0.9985,0.9985,0.0000
+Cross-entropy loss,0.1583,0.1583,0.0000

@@ -1,0 +1,8 @@
+,nenda,njema,mama,hedhi,kula,baba,habari
+nenda,17,0,0,0,1,0,0
+njema,0,18,0,0,0,0,0
+mama,0,0,18,0,0,0,0
+hedhi,0,0,0,18,0,0,0
+kula,0,0,0,0,18,0,0
+baba,0,0,0,1,0,17,0
+habari,0,0,1,0,0,0,17
